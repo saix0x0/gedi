@@ -24,6 +24,17 @@
 - Two themes: `cyber` (default, Rajdhani/Orbitron fonts — Rajdhani IS Cyberpunk 2077's UI font) and `rdr` (Rye + Georgia, parchment). Toggle in HUD, persisted `gedi.theme`, applied as `data-theme` on <html>; all styling via CSS var overrides in index.css. RDR map = CARTO voyager tiles + CSS sepia filter (.map-rdr).
 - Quest path: selecting a place draws glowing dashed route (OSRM public demo API, straight-line fallback) from user geolocation (fallback: IIITH campus 78.3489,17.4455) to the place. Route persists after sheet closes (separate `routeTo` state). Redraw needed after setStyle (theme switch wipes layers) — handled via routeCoords ref + styledata listener.
 
+## De-vibecoding pass (added 2026-07-05, later same day)
+- **No emojis anywhere.** All glyphs from `src/icons.ts` — raw SVG strings (stroke, currentColor), used via `svg(name,size)` in marker innerHTML and `<Glyph>` (dangerouslySetInnerHTML) in React. `CATEGORY_ICON` maps category→glyph.
+- Markers = CP2077 icon badges (rounded square, category glyph, quest-color border/glow). Districts = hand-drawn polygons in MapView `DISTRICTS` (rough rings, game aesthetic, not real boundaries) with dashed borders; per-district neon color in cyber, uniform ink `#5a4632` in rdr; labels are DOM markers (survive setStyle) styled `.district-label`.
+- Filter legend on map (funnel button): quest-type chips + category grid w/ counts; state = hiddenCats/hiddenQuests Sets in App.
+- Fonts: `--display` var = Oswald (cyber) / Rokkitt (rdr); body Rajdhani (cyber) / Georgia (rdr). No Orbitron/Rye (user called them vibecoded).
+- Tabs renamed: MAP / EXPLORATIONS (quests) / SPECIAL PICKS (collections) / YOUR PICKS (profile + badges + conquered list). Theme toggle shows "2077"/"1899".
+- RDR toned down: bg #c9b98f, map filter sepia(.62) saturate(.52) brightness(.8).
+
+## On the books (user-requested, not built)
+- **Dev login → add locations for everyone**: planned as V2 via Supabase (auth + places table + RLS: only dev role inserts; public read). Until then places.json commits are the admin flow. Keep `getPlaces()` seam.
+
 ## State (2026-07-05)
 Done: full V1 loop working (map → marker → card → mark visited → XP/level/badges), quests/collections/profile tabs, search, game fonts, RDR theme toggle, glowing quest paths. All mobile-verified via preview.
 Next up (user's roadmap): more places (target 60–100), real photos per place, "add your own location" UI backed by addLocalPlace, QR generation, leaderboard/social (V2, needs Supabase), transfer repo to tag-iiith.

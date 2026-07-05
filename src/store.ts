@@ -71,24 +71,25 @@ export interface Badge {
 const countIn = (v: Set<string>, ps: Place[], f: (p: Place) => boolean) =>
   ps.filter(p => v.has(p.id) && f(p)).length
 
+// icon = glyph name from icons.ts (no emojis — game HUD rules)
 export const BADGES: Badge[] = [
-  { id: 'first', name: 'First Adventure', desc: 'Visit your first place', icon: '🧭', earned: v => v.size >= 1 },
-  { id: 'food', name: 'Food Hunter', desc: 'Visit 2 food spots', icon: '🍛', earned: (v, p) => countIn(v, p, x => ['Food', 'Street Food', 'Dessert'].includes(x.category)) >= 2 },
-  { id: 'night', name: 'Night Owl', desc: 'Visit 3 night spots', icon: '🌙', earned: (v, p) => countIn(v, p, x => x.collections.includes('night')) >= 3 },
-  { id: 'nature', name: 'Nature Lover', desc: 'Visit 2 parks/lakes/treks', icon: '🌿', earned: (v, p) => countIn(v, p, x => ['Park', 'Lake', 'Adventure'].includes(x.category)) >= 2 },
-  { id: 'history', name: 'Time Traveller', desc: 'Visit 3 historical places', icon: '🏰', earned: (v, p) => countIn(v, p, x => ['Historical', 'Museum', 'Temple'].includes(x.category)) >= 3 },
-  { id: 'main5', name: 'Story Mode', desc: 'Complete all main quests', icon: '⚔️', earned: (v, p) => p.filter(x => x.quest === 'main').every(x => v.has(x.id)) },
-  { id: 'legend', name: 'IIITH Legend', desc: 'Do all iiith-legend spots', icon: '🔥', earned: (v, p) => p.filter(x => x.tags.includes('iiith-legend')).every(x => v.has(x.id)) },
-  { id: 'master', name: 'Hyderabad Master', desc: 'Visit every single place', icon: '👑', earned: (v, p) => p.every(x => v.has(x.id)) },
+  { id: 'first', name: 'First Adventure', desc: 'Visit your first place', icon: 'compass', earned: v => v.size >= 1 },
+  { id: 'food', name: 'Food Hunter', desc: 'Visit 2 food spots', icon: 'food', earned: (v, p) => countIn(v, p, x => ['Food', 'Street Food', 'Dessert'].includes(x.category)) >= 2 },
+  { id: 'night', name: 'Night Owl', desc: 'Visit 3 night spots', icon: 'moon', earned: (v, p) => countIn(v, p, x => x.collections.includes('night')) >= 3 },
+  { id: 'nature', name: 'Nature Lover', desc: 'Visit 2 parks/lakes/treks', icon: 'leaf', earned: (v, p) => countIn(v, p, x => ['Park', 'Lake', 'Adventure'].includes(x.category)) >= 2 },
+  { id: 'history', name: 'Time Traveller', desc: 'Visit 3 historical places', icon: 'fort', earned: (v, p) => countIn(v, p, x => ['Historical', 'Museum', 'Temple'].includes(x.category)) >= 3 },
+  { id: 'main5', name: 'Story Mode', desc: 'Complete all main quests', icon: 'swords', earned: (v, p) => p.filter(x => x.quest === 'main').every(x => v.has(x.id)) },
+  { id: 'legend', name: 'IIITH Legend', desc: 'Do all iiith-legend spots', icon: 'flame', earned: (v, p) => p.filter(x => x.tags.includes('iiith-legend')).every(x => v.has(x.id)) },
+  { id: 'master', name: 'Hyderabad Master', desc: 'Visit every single place', icon: 'crown', earned: (v, p) => p.every(x => v.has(x.id)) },
 ]
 
 export const COLLECTIONS: { id: string; name: string; icon: string }[] = [
-  { id: 'budget', name: 'Under ₹300', icon: '💸' },
-  { id: 'gourmet', name: 'Gourmet', icon: '🍽️' },
-  { id: 'birthday', name: 'Birthday Plans', icon: '🎂' },
-  { id: 'date', name: 'Date Spots', icon: '💘' },
-  { id: 'night', name: 'After Dark', icon: '🌃' },
-  { id: 'streetfood', name: 'Street Food', icon: '🌶️' },
-  { id: 'trek', name: 'Treks & Trips', icon: '⛰️' },
-  { id: 'study', name: 'Chill & Study', icon: '📚' },
+  { id: 'budget', name: 'Under ₹300', icon: 'coin' },
+  { id: 'gourmet', name: 'Gourmet', icon: 'food' },
+  { id: 'birthday', name: 'Birthday Plans', icon: 'gift' },
+  { id: 'date', name: 'Date Spots', icon: 'heart' },
+  { id: 'night', name: 'After Dark', icon: 'moon' },
+  { id: 'streetfood', name: 'Street Food', icon: 'flame' },
+  { id: 'trek', name: 'Treks & Trips', icon: 'mountain' },
+  { id: 'study', name: 'Chill & Study', icon: 'book' },
 ]
