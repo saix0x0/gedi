@@ -61,6 +61,26 @@ export const DISTRICTS: District[] = [
     tagline: 'Charminar, chudi bazaar & biryani that settles arguments.',
     ring: roadRing('OLD CITY', [[78.42, 17.375], [78.45, 17.38], [78.47, 17.40], [78.50, 17.40], [78.51, 17.35], [78.46, 17.31], [78.41, 17.33]]),
   },
+  {
+    name: 'HITEC CITY', color: '#29ffe3',
+    tagline: 'Cyberabad core — glass towers, food courts & endless traffic.',
+    ring: roadRing('HITEC CITY', [[78.372, 17.452], [78.392, 17.458], [78.398, 17.443], [78.382, 17.436], [78.370, 17.443]]),
+  },
+  {
+    name: 'MANIKONDA', color: '#ff7ac6',
+    tagline: 'PG central — Lanco Hills, biryani spots & every fresher rental.',
+    ring: roadRing('MANIKONDA', [[78.372, 17.408], [78.400, 17.410], [78.406, 17.390], [78.378, 17.386]]),
+  },
+  {
+    name: 'BEGUMPET', color: '#9dff4d',
+    tagline: 'Old airport road — Niloufer chai, Prakash offset & Lifestyle.',
+    ring: roadRing('BEGUMPET', [[78.448, 17.452], [78.470, 17.455], [78.474, 17.438], [78.452, 17.435]]),
+  },
+  {
+    name: 'AMEERPET', color: '#ffb03a',
+    tagline: 'Coaching-class capital of India. Every course, every crowd.',
+    ring: roadRing('AMEERPET', [[78.438, 17.445], [78.458, 17.446], [78.460, 17.430], [78.440, 17.428]]),
+  },
 ]
 
 export const RDR_INK = '#3a2a18'

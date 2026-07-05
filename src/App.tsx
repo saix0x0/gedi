@@ -330,10 +330,12 @@ export default function App() {
               <div><Glyph name="hourglass" /><span>{selected.duration}</span></div>
               <div><Glyph name="metro" /><span>{selected.metro}</span></div>
             </div>
-            <div className="sid">
-              <div className="sid-title">Sid’s Certified</div>
-              {selected.sid}
-            </div>
+            {selected.sid && (
+              <div className="sid">
+                <div className="sid-title">Sid’s Certified</div>
+                {selected.sid}
+              </div>
+            )}
             <div className="sheet-actions">
               <a className="btn btn-ghost" href={selected.maps} target="_blank" rel="noreferrer">
                 <Glyph name="pin" size={14} /> NAVIGATE
@@ -378,7 +380,7 @@ export default function App() {
   )
 }
 
-const CATEGORIES = ['Food', 'Street Food', 'Dessert', 'Historical', 'Lake', 'Museum', 'Adventure', 'Culture', 'Park', 'Night Drive', 'Temple', 'Weekend Trip', 'Mall']
+const CATEGORIES = ['Food', 'Cafe', 'Bar', 'Street Food', 'Dessert', 'Historical', 'Lake', 'Museum', 'Adventure', 'Culture', 'Park', 'Night Drive', 'Temple', 'Weekend Trip', 'Mall', 'School']
 const QUEST_XP: Record<Quest, number> = { main: 100, side: 60, special: 80 }
 
 // Accepts: full Google Maps URL (@lat,lng · ?q=lat,lng · !3d..!4d..) or plain "lat, lng".

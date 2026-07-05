@@ -38,8 +38,12 @@ const P: Record<string, string> = {
   camera: `<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7l2-3h4l2 3"/><circle cx="12" cy="13" r="3.5"/>`,
   campus: `<path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M13.2 6.5l-4.7 7h3.2l-1 5 4.8-7h-3.3l1-5z" fill="currentColor" stroke="none"/>`,
   qr: `<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3M20 14v.01M14 20h.01M17 20h.01M20 17v4"/>`,
+  school: `<path d="M12 4L2 9l10 5 10-5-10-5z"/><path d="M6 11v5c0 1.2 3 2.5 6 2.5s6-1.3 6-2.5v-5"/><path d="M22 9.2V14"/>`,
+  office: `<rect x="4" y="3" width="16" height="18" rx="1"/><path d="M8 7h2M14 7h2M8 11h2M14 11h2M8 15h2M14 15h2M10 21v-3h4v3"/>`,
   share: `<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/>`,
   close: `<path d="M6 6l12 12M18 6L6 18"/>`,
+  coffee: `<path d="M4 8h13v5a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8z"/><path d="M17 9h2.5a2.5 2.5 0 0 1 0 5H17"/><path d="M7 3v2M10 3v2M13 3v2"/>`,
+  drink: `<path d="M4 4h16l-8 8-8-8z"/><path d="M12 12v7M8 21h8"/>`,
 }
 
 export type IconName = keyof typeof P
@@ -63,6 +67,10 @@ export const CATEGORY_ICON: Record<string, string> = {
   Temple: 'temple',
   'Weekend Trip': 'tent',
   Mall: 'bag',
+  School: 'school',
+  Cafe: 'coffee',
+  Bar: 'drink',
+  Office: 'office',
 }
 
 export const catIcon = (category: string) => CATEGORY_ICON[category] || 'pin'
