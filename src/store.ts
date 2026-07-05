@@ -80,6 +80,7 @@ export const BADGES: Badge[] = [
   { id: 'history', name: 'Time Traveller', desc: 'Visit 3 historical places', icon: 'fort', earned: (v, p) => countIn(v, p, x => ['Historical', 'Museum', 'Temple'].includes(x.category)) >= 3 },
   { id: 'main5', name: 'Story Mode', desc: 'Complete all main quests', icon: 'swords', earned: (v, p) => p.filter(x => x.quest === 'main').every(x => v.has(x.id)) },
   { id: 'legend', name: 'IIITH Legend', desc: 'Do all iiith-legend spots', icon: 'flame', earned: (v, p) => p.filter(x => x.tags.includes('iiith-legend')).every(x => v.has(x.id)) },
+  { id: 'burrito', name: 'Burrito Baron', desc: 'Conquer every California Burrito', icon: 'food', earned: (v, p) => { const cb = p.filter(x => x.tags.includes('calbur')); return cb.length > 0 && cb.every(x => v.has(x.id)) } },
   { id: 'master', name: 'Hyderabad Master', desc: 'Visit every single place', icon: 'crown', earned: (v, p) => p.every(x => v.has(x.id)) },
 ]
 
