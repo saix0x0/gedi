@@ -81,6 +81,16 @@ export const DISTRICTS: District[] = [
     tagline: 'Coaching-class capital of India. Every course, every crowd.',
     ring: roadRing('AMEERPET', [[78.438, 17.445], [78.458, 17.446], [78.460, 17.430], [78.440, 17.428]]),
   },
+  {
+    name: 'GOLCONDA', color: '#ffcf4d',
+    tagline: 'Ancient fort, sunset views & the best free thing in Hyderabad.',
+    ring: roadRing('GOLCONDA', [[78.385, 17.398], [78.405, 17.399], [78.416, 17.386], [78.406, 17.372], [78.386, 17.372], [78.377, 17.385]]),
+  },
+  {
+    name: 'FINANCIAL DISTRICT', color: '#7ad0ff',
+    tagline: 'Glass towers, weekend-quiet & the deep-south internship belt.',
+    ring: roadRing('FINANCIAL DISTRICT', [[78.328, 17.418], [78.352, 17.418], [78.362, 17.402], [78.35, 17.388], [78.328, 17.392]]),
+  },
 ]
 
 export const RDR_INK = '#3a2a18'
