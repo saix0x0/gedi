@@ -332,7 +332,7 @@ export default function App() {
             </div>
             {selected.sid && (
               <div className="sid">
-                <div className="sid-title">Sid’s Certified</div>
+                <div className="sid-title">{selected.by ? `${selected.by} Recommends` : 'Sid’s Certified'}</div>
                 {selected.sid}
               </div>
             )}

@@ -21,6 +21,7 @@ export interface Place {
   maps: string
   sid: string
   tags: string[]
+  by?: string // who's certifying — defaults to Sid
 }
 
 // Data layer: V1 reads bundled JSON (+ any locally added places).
