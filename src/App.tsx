@@ -31,6 +31,26 @@ export default function App() {
   const [theme, setTheme] = useState<Theme>(() => (localStorage.getItem('gedi.theme') as Theme) || 'cyber')
   const [filterOpen, setFilterOpen] = useState(false)
   const [district, setDistrict] = useState<District | null>(null)
+  const [picking, setPicking] = useState<'personal' | 'tag' | null>(null)
+
+  const startPick = (mode: 'personal' | 'tag') => {
+    setPicking(mode)
+    setTab('map')
+  }
+  const onPick = useCallback((c: [number, number]) => {
+    setPicking(prev => {
+      if (prev) {
+        const dk = 'gedi.draft.' + prev
+        const d = JSON.parse(sessionStorage.getItem(dk) || '{}')
+        d.loc = `${c[1].toFixed(5)}, ${c[0].toFixed(5)}`
+        sessionStorage.setItem(dk, JSON.stringify(d))
+        setTab('you')
+        setToast('LOCATION SET — FINISH YOUR PIN')
+        setTimeout(() => setToast(null), 2600)
+      }
+      return null
+    })
+  }, [])
   const [hiddenCats, setHiddenCats] = useState<Set<string>>(new Set())
   const [hiddenQuests, setHiddenQuests] = useState<Set<Quest>>(new Set())
 
@@ -127,7 +147,9 @@ export default function App() {
                 <Glyph name="funnel" size={18} />
               </button>
             </div>
-            <MapView places={mapPlaces} visited={visited} onSelect={setSelected} onDistrict={setDistrict} theme={theme} routeTo={routeTo} />
+            <MapView places={mapPlaces} visited={visited} onSelect={setSelected} onDistrict={setDistrict} theme={theme} routeTo={routeTo} picking={!!picking} onPick={onPick} />
+
+            {picking && <div className="pick-banner"><Glyph name="pin" size={13} /> TAP THE MAP TO DROP YOUR PIN</div>}
 
             {/* Live search results */}
             {query.trim() && !filterOpen && (
@@ -258,10 +280,12 @@ export default function App() {
             <p className="hint">Your personal pin — only on your map. GEDI is favourites-only, so make it count.</p>
             <AddPlaceForm
               mode="personal"
+              places={places}
               onDone={p => { addLocalPlace(p); setPlacesV(v => v + 1); setToast('SPOT ADDED TO YOUR MAP'); setTimeout(() => setToast(null), 2600) }}
+              onPickOnMap={() => startPick('personal')}
             />
 
-            <TagSection onToast={m => { setToast(m); setTimeout(() => setToast(null), 3200) }} />
+            <TagSection places={places} onPickOnMap={() => startPick('tag')} onToast={m => { setToast(m); setTimeout(() => setToast(null), 3200) }} />
           </div>
         )}
       </main>
@@ -328,26 +352,49 @@ export default function App() {
 const CATEGORIES = ['Food', 'Street Food', 'Dessert', 'Historical', 'Lake', 'Museum', 'Adventure', 'Culture', 'Park', 'Night Drive', 'Temple', 'Weekend Trip', 'Mall']
 const QUEST_XP: Record<Quest, number> = { main: 100, side: 60, special: 80 }
 
-function AddPlaceForm({ mode, onDone }: { mode: 'personal' | 'tag'; onDone: (p: Place) => void }) {
-  const [f, setF] = useState({ name: '', area: '', category: 'Food', quest: 'side' as Quest, description: '', budget: '', bestTime: '', duration: '', metro: '', sid: '', lat: '', lng: '' })
-  const set = (k: string, v: string) => setF(prev => ({ ...prev, [k]: v }))
+// Accepts: full Google Maps URL (@lat,lng · ?q=lat,lng · !3d..!4d..) or plain "lat, lng".
+// Short links (maps.app.goo.gl) can't be resolved in the browser — user must open & copy the full URL.
+function parseLocation(s: string): [number, number] | null {
+  const m =
+    s.match(/@(-?\d{1,3}\.\d+),(-?\d{1,3}\.\d+)/) ||
+    s.match(/[?&]q=(-?\d{1,3}\.\d+)\s*,\s*(-?\d{1,3}\.\d+)/) ||
+    s.match(/!3d(-?\d{1,3}\.\d+)!4d(-?\d{1,3}\.\d+)/) ||
+    s.match(/^\s*(-?\d{1,3}\.\d+)\s*,\s*(-?\d{1,3}\.\d+)\s*$/)
+  if (!m) return null
+  const lat = +m[1], lng = +m[2]
+  return Math.abs(lat) <= 90 && Math.abs(lng) <= 180 ? [lat, lng] : null
+}
+
+const EMPTY_DRAFT = { name: '', area: '', category: 'Food', quest: 'side' as Quest, description: '', budget: '', bestTime: '', duration: '', metro: '', sid: '', loc: '' }
+
+function AddPlaceForm({ mode, places, onDone, onPickOnMap }: { mode: 'personal' | 'tag'; places: Place[]; onDone: (p: Place) => void; onPickOnMap: () => void }) {
+  const DK = 'gedi.draft.' + mode // draft survives the hop to the map picker
+  const [f, setF] = useState(() => ({ ...EMPTY_DRAFT, ...JSON.parse(sessionStorage.getItem(DK) || '{}') }))
+  useEffect(() => { sessionStorage.setItem(DK, JSON.stringify(f)) }, [f, DK])
+  const set = (k: string, v: string) => setF((prev: typeof EMPTY_DRAFT) => ({ ...prev, [k]: v }))
   const locate = () => navigator.geolocation?.getCurrentPosition(
-    p => setF(prev => ({ ...prev, lat: p.coords.latitude.toFixed(5), lng: p.coords.longitude.toFixed(5) })),
-    () => alert('Location unavailable — enter coordinates manually (long-press in Google Maps to copy them).'),
+    p => set('loc', `${p.coords.latitude.toFixed(5)}, ${p.coords.longitude.toFixed(5)}`),
+    () => alert('Location unavailable — paste a Google Maps link instead, or use MARK ON MAP.'),
   )
   const submit = () => {
-    const lat = parseFloat(f.lat), lng = parseFloat(f.lng)
-    if (!f.name.trim() || isNaN(lat) || isNaN(lng)) { alert('Need at least a name + coordinates (use the location button, or long-press in Google Maps).'); return }
+    const coords = parseLocation(f.loc)
+    if (!f.name.trim()) { alert('Give it a name.'); return }
+    if (!coords) { alert("Location not understood. Paste a full Google Maps link (short maps.app.goo.gl links won't work — open it and copy the full URL), plain \"lat, lng\", or use MARK ON MAP."); return }
+    const [lat, lng] = coords
+    const nameNorm = f.name.trim().toLowerCase()
+    const dup = places.find(p => p.name.trim().toLowerCase() === nameNorm || Math.hypot(p.lat - lat, p.lng - lng) < 0.0015)
+    if (dup && !confirm(`"${dup.name}" is already pinned right about there. GEDI is favourites-only — add yours anyway?`)) return
     onDone({
-      id: f.name.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-') + (mode === 'personal' ? '-local' : ''),
+      id: nameNorm.replace(/[^a-z0-9]+/g, '-') + (mode === 'personal' ? '-local' : ''),
       name: f.name.trim(), area: f.area || 'Hyderabad', category: f.category, quest: f.quest,
       collections: [], description: f.description || f.name, lat, lng,
       budget: f.budget || '₹?', bestTime: f.bestTime || 'Anytime', duration: f.duration || '1–2 hrs',
-      metro: f.metro || '—', xp: QUEST_XP[f.quest],
-      maps: `https://maps.google.com/?q=${lat},${lng}`,
+      metro: f.metro || '—', xp: QUEST_XP[f.quest as Quest],
+      maps: /^https?:/.test(f.loc.trim()) ? f.loc.trim() : `https://maps.google.com/?q=${lat},${lng}`,
       sid: f.sid || (mode === 'personal' ? 'My personal pick.' : ''), tags: [],
     })
-    setF({ name: '', area: '', category: 'Food', quest: 'side', description: '', budget: '', bestTime: '', duration: '', metro: '', sid: '', lat: '', lng: '' })
+    sessionStorage.removeItem(DK)
+    setF({ ...EMPTY_DRAFT })
   }
   return (
     <div className="form">
@@ -358,10 +405,10 @@ function AddPlaceForm({ mode, onDone }: { mode: 'personal' | 'tag'; onDone: (p: 
           {CATEGORIES.map(c => <option key={c}>{c}</option>)}
         </select>
       </div>
+      <input className="fi" placeholder="GOOGLE MAPS LINK or LAT, LNG *" value={f.loc} onChange={e => set('loc', e.target.value)} />
       <div className="frow">
-        <input className="fi" placeholder="LAT *" value={f.lat} onChange={e => set('lat', e.target.value)} />
-        <input className="fi" placeholder="LNG *" value={f.lng} onChange={e => set('lng', e.target.value)} />
-        <button className="fi fbtn" onClick={locate} title="Use my location"><Glyph name="target" size={15} /></button>
+        <button className="fi fbtn2" onClick={locate}><Glyph name="target" size={14} /> MY LOCATION</button>
+        <button className="fi fbtn2" onClick={onPickOnMap}><Glyph name="pin" size={14} /> MARK ON MAP</button>
       </div>
       {mode === 'tag' && (
         <select className="fi" value={f.quest} onChange={e => set('quest', e.target.value)}>
@@ -385,7 +432,7 @@ function AddPlaceForm({ mode, onDone }: { mode: 'personal' | 'tag'; onDone: (p: 
 // (client-side code is public). Change: printf 'newpass' | shasum -a 256
 const TAG_HASH = '26abfab626f13890a8944fd242d853025f46ac7173c639146125d7e65ec5bcde'
 
-function TagSection({ onToast }: { onToast: (m: string) => void }) {
+function TagSection({ onToast, places, onPickOnMap }: { onToast: (m: string) => void; places: Place[]; onPickOnMap: () => void }) {
   const [open, setOpen] = useState(false)
   const [pw, setPw] = useState('')
   const [ok, setOk] = useState(false)
@@ -414,7 +461,7 @@ function TagSection({ onToast }: { onToast: (m: string) => void }) {
       {open && ok && (
         <>
           <p className="hint">Adds go live for <b>everyone</b>: this copies the place JSON and opens places.json on GitHub — paste inside the list, commit, done (~1 min to deploy). No repo access? Send the copied JSON to Sid.</p>
-          <AddPlaceForm mode="tag" onDone={submitTag} />
+          <AddPlaceForm mode="tag" places={places} onDone={submitTag} onPickOnMap={onPickOnMap} />
         </>
       )}
     </div>

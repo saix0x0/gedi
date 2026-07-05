@@ -424,6 +424,16 @@ html[data-theme='rdr'] .sheet-desc { color: #40301a; }
 .fi:focus { border-color: var(--cyan); }
 html[data-theme='rdr'] .fi:focus { border-color: var(--magenta); }
 .fbtn { flex: 0 0 46px !important; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--green); }
+.fbtn2 { display: flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer; color: var(--green); letter-spacing: 1px; }
+.pick-banner {
+  position: absolute; top: 62px; left: 50%; transform: translateX(-50%); z-index: 5;
+  display: flex; align-items: center; gap: 6px; white-space: nowrap;
+  padding: 10px 18px; border-radius: 8px;
+  background: rgba(10, 10, 18, .95); border: 1px solid var(--green); color: var(--green);
+  font-family: var(--display); font-size: 11px; letter-spacing: 2px;
+  animation: toastIn .3s cubic-bezier(.22, 1, .36, 1);
+}
+html[data-theme='rdr'] .pick-banner { background: rgba(211, 196, 155, .96); }
 .tag-section { margin-top: 26px; padding-top: 14px; border-top: 1px dashed var(--line); }
 .tag-head {
   width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;

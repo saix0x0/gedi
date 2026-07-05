@@ -101,9 +101,11 @@ interface Props {
   onDistrict: (d: District | null) => void
   theme: Theme
   routeTo: Place | null
+  picking?: boolean
+  onPick?: (c: [number, number]) => void
 }
 
-export default function MapView({ places, visited, onSelect, onDistrict, theme, routeTo }: Props) {
+export default function MapView({ places, visited, onSelect, onDistrict, theme, routeTo, picking, onPick }: Props) {
   const div = useRef<HTMLDivElement>(null)
   const map = useRef<maplibregl.Map | null>(null)
   const markers = useRef<maplibregl.Marker[]>([])
@@ -114,6 +116,8 @@ export default function MapView({ places, visited, onSelect, onDistrict, theme, 
   const selectedId = useRef<string | null>(null)
   const onDistrictRef = useRef(onDistrict)
   onDistrictRef.current = onDistrict
+  const pickRef = useRef<{ picking?: boolean; onPick?: (c: [number, number]) => void }>({})
+  pickRef.current = { picking, onPick }
 
   useEffect(() => {
     if (!div.current) return
@@ -147,8 +151,12 @@ export default function MapView({ places, visited, onSelect, onDistrict, theme, 
       m.getCanvas().style.cursor = ''
     })
 
-    // Click/tap: select territory + surface its info card
+    // Click/tap: pick-a-location mode wins; otherwise territory select
     m.on('click', e => {
+      if (pickRef.current.picking) {
+        pickRef.current.onPick?.([e.lngLat.lng, e.lngLat.lat])
+        return
+      }
       const feats = m.queryRenderedFeatures(e.point, { layers: m.getLayer('districts-fill') ? ['districts-fill'] : [] })
       const id = (feats[0]?.id as string) ?? null
       setState(selectedId.current, 'selected', false)

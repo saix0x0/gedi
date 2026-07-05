@@ -50,6 +50,7 @@
 - CP toggle plate now black (#0b0b0e). Cyber map filter removed (was too dark).
 - Search: live results dropdown on map (top 6), tap opens sheet + draws path.
 - YOUR PICKS: AddPlaceForm (personal → addLocalPlace, id suffix -local) + TagSection (SHA-256 gate, password TAG@GEDI, hash in App.tsx; tag submit copies JSON + opens GitHub edit of places.json). placesV state bumps to refresh getPlaces().
+- Location input: single `loc` field accepts Google Maps URL (@lat,lng / ?q= / !3d!4d) or "lat, lng" via parseLocation(); short maps.app.goo.gl links can't resolve client-side (alert explains). MY LOCATION (GPS) + MARK ON MAP (picking state in App -> map tab -> click writes coords into sessionStorage draft `gedi.draft.<mode>` -> back to YOUR PICKS; form drafts persist via sessionStorage). Dup guard: same name or within ~0.0015 deg -> confirm dialog.
 - QR: public/qr.png (512px, points to live URL) + regenerate: npx qrcode -o public/qr.png -w 512 <url>.
 
 ## On the books (user-requested, not built)
