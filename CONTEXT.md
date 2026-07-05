@@ -45,6 +45,13 @@
 - Districts redrawn with 8–12 vertices each, loosely tracing Musi/Road No.1/ORR; added KUKATPALLY (#ff9f1c). Richer taglines.
 - Malls added to places.json: inorbit, lulu, gvk-one (19 places total).
 
+## Region-map + add-place pass (2026-07-05, fifth pass)
+- Districts renamed to real areas (GACHIBOWLI/KONDAPUR/MADHAPUR/KUKATPALLY/JUBILEE HILLS/BANJARA HILLS/CITY CENTER/SECUNDERABAD/OLD CITY), contiguous tessellation. Borders traced along real roads: `scripts/trace-districts.mjs` routes each polygon edge via OSRM once, bakes to `src/districts-traced.json` (edge cache keeps shared borders identical). Re-run script if corners change. Border style: width 2/3.4, opacity .75/1, fill .015/.14.
+- CP toggle plate now black (#0b0b0e). Cyber map filter removed (was too dark).
+- Search: live results dropdown on map (top 6), tap opens sheet + draws path.
+- YOUR PICKS: AddPlaceForm (personal → addLocalPlace, id suffix -local) + TagSection (SHA-256 gate, password TAG@GEDI, hash in App.tsx; tag submit copies JSON + opens GitHub edit of places.json). placesV state bumps to refresh getPlaces().
+- QR: public/qr.png (512px, points to live URL) + regenerate: npx qrcode -o public/qr.png -w 512 <url>.
+
 ## On the books (user-requested, not built)
 - **Dev login → add locations for everyone**: planned as V2 via Supabase (auth + places table + RLS: only dev role inserts; public read). Until then places.json commits are the admin flow. Keep `getPlaces()` seam.
 

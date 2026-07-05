@@ -51,17 +51,18 @@ function addDistricts(m: maplibregl.Map, theme: Theme) {
         })),
       },
     })
+    // CP2077 region-map look: bold colored outlines on dark, fill only when active
     m.addLayer({
       id: 'districts-fill', type: 'fill', source: 'districts',
-      paint: { 'fill-color': ['get', 'color'], 'fill-opacity': ['case', activeExpr, theme === 'rdr' ? 0.12 : 0.16, 0.04] },
+      paint: { 'fill-color': ['get', 'color'], 'fill-opacity': ['case', activeExpr, theme === 'rdr' ? 0.1 : 0.14, 0.015] },
     })
     m.addLayer({
       id: 'districts-line', type: 'line', source: 'districts',
       layout: { 'line-join': 'round' },
       paint: {
         'line-color': ['get', 'color'],
-        'line-width': ['case', activeExpr, 2.6, 1.2],
-        'line-opacity': ['case', activeExpr, 0.95, 0.4],
+        'line-width': ['case', activeExpr, 3.4, 2],
+        'line-opacity': ['case', activeExpr, 1, 0.75],
       },
     })
   } catch { /* style mid-load; retried on next styledata */ }

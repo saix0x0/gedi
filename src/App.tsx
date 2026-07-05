@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState, useCallback } from 'react'
 import MapView from './MapView'
 import {
-  getPlaces, getVisited, setVisited as persistVisited, totalXp, levelFromXp,
+  getPlaces, getVisited, setVisited as persistVisited, totalXp, levelFromXp, addLocalPlace,
   BADGES, COLLECTIONS, type Place, type Quest, type Theme,
 } from './store'
 import { svg, catIcon } from './icons'
@@ -20,7 +20,8 @@ function Glyph({ name, size = 16 }: { name: string; size?: number }) {
 }
 
 export default function App() {
-  const places = useMemo(() => getPlaces(), [])
+  const [placesV, setPlacesV] = useState(0)
+  const places = useMemo(() => getPlaces(), [placesV])
   const [visited, setVisitedState] = useState<Set<string>>(() => getVisited())
   const [tab, setTab] = useState<Tab>('map')
   const [selected, setSelectedState] = useState<Place | null>(null)
@@ -127,6 +128,20 @@ export default function App() {
               </button>
             </div>
             <MapView places={mapPlaces} visited={visited} onSelect={setSelected} onDistrict={setDistrict} theme={theme} routeTo={routeTo} />
+
+            {/* Live search results */}
+            {query.trim() && !filterOpen && (
+              <div className="search-results">
+                {mapPlaces.slice(0, 6).map(p => (
+                  <button key={p.id} className="sr-item" onClick={() => { setSelected(p) }}>
+                    <Glyph name={catIcon(p.category)} size={14} />
+                    <span className="sr-name">{p.name}</span>
+                    <span className="sr-area">{p.area}</span>
+                  </button>
+                ))}
+                {!mapPlaces.length && <div className="sr-empty">NO SPOTS FOUND</div>}
+              </div>
+            )}
 
             {/* CP2077 district info card */}
             {district && !filterOpen && (
@@ -238,6 +253,15 @@ export default function App() {
                 ))}
               </>
             )}
+
+            <h2 className="quest-h" style={{ marginTop: 22 }}><Glyph name="pin" /> Add Your Own Spot</h2>
+            <p className="hint">Your personal pin — only on your map. GEDI is favourites-only, so make it count.</p>
+            <AddPlaceForm
+              mode="personal"
+              onDone={p => { addLocalPlace(p); setPlacesV(v => v + 1); setToast('SPOT ADDED TO YOUR MAP'); setTimeout(() => setToast(null), 2600) }}
+            />
+
+            <TagSection onToast={m => { setToast(m); setTimeout(() => setToast(null), 3200) }} />
           </div>
         )}
       </main>
@@ -297,6 +321,102 @@ export default function App() {
       )}
 
       {toast && <div className="toast">{toast}</div>}
+    </div>
+  )
+}
+
+const CATEGORIES = ['Food', 'Street Food', 'Dessert', 'Historical', 'Lake', 'Museum', 'Adventure', 'Culture', 'Park', 'Night Drive', 'Temple', 'Weekend Trip', 'Mall']
+const QUEST_XP: Record<Quest, number> = { main: 100, side: 60, special: 80 }
+
+function AddPlaceForm({ mode, onDone }: { mode: 'personal' | 'tag'; onDone: (p: Place) => void }) {
+  const [f, setF] = useState({ name: '', area: '', category: 'Food', quest: 'side' as Quest, description: '', budget: '', bestTime: '', duration: '', metro: '', sid: '', lat: '', lng: '' })
+  const set = (k: string, v: string) => setF(prev => ({ ...prev, [k]: v }))
+  const locate = () => navigator.geolocation?.getCurrentPosition(
+    p => setF(prev => ({ ...prev, lat: p.coords.latitude.toFixed(5), lng: p.coords.longitude.toFixed(5) })),
+    () => alert('Location unavailable — enter coordinates manually (long-press in Google Maps to copy them).'),
+  )
+  const submit = () => {
+    const lat = parseFloat(f.lat), lng = parseFloat(f.lng)
+    if (!f.name.trim() || isNaN(lat) || isNaN(lng)) { alert('Need at least a name + coordinates (use the location button, or long-press in Google Maps).'); return }
+    onDone({
+      id: f.name.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-') + (mode === 'personal' ? '-local' : ''),
+      name: f.name.trim(), area: f.area || 'Hyderabad', category: f.category, quest: f.quest,
+      collections: [], description: f.description || f.name, lat, lng,
+      budget: f.budget || '₹?', bestTime: f.bestTime || 'Anytime', duration: f.duration || '1–2 hrs',
+      metro: f.metro || '—', xp: QUEST_XP[f.quest],
+      maps: `https://maps.google.com/?q=${lat},${lng}`,
+      sid: f.sid || (mode === 'personal' ? 'My personal pick.' : ''), tags: [],
+    })
+    setF({ name: '', area: '', category: 'Food', quest: 'side', description: '', budget: '', bestTime: '', duration: '', metro: '', sid: '', lat: '', lng: '' })
+  }
+  return (
+    <div className="form">
+      <input className="fi" placeholder="NAME *" value={f.name} onChange={e => set('name', e.target.value)} />
+      <div className="frow">
+        <input className="fi" placeholder="AREA" value={f.area} onChange={e => set('area', e.target.value)} />
+        <select className="fi" value={f.category} onChange={e => set('category', e.target.value)}>
+          {CATEGORIES.map(c => <option key={c}>{c}</option>)}
+        </select>
+      </div>
+      <div className="frow">
+        <input className="fi" placeholder="LAT *" value={f.lat} onChange={e => set('lat', e.target.value)} />
+        <input className="fi" placeholder="LNG *" value={f.lng} onChange={e => set('lng', e.target.value)} />
+        <button className="fi fbtn" onClick={locate} title="Use my location"><Glyph name="target" size={15} /></button>
+      </div>
+      {mode === 'tag' && (
+        <select className="fi" value={f.quest} onChange={e => set('quest', e.target.value)}>
+          <option value="main">Main Quest</option><option value="side">Side Quest</option><option value="special">Special</option>
+        </select>
+      )}
+      <textarea className="fi" rows={2} placeholder="WHY IS IT A FAVOURITE?" value={f.description} onChange={e => set('description', e.target.value)} />
+      <div className="frow">
+        <input className="fi" placeholder="BUDGET (₹)" value={f.budget} onChange={e => set('budget', e.target.value)} />
+        <input className="fi" placeholder="BEST TIME" value={f.bestTime} onChange={e => set('bestTime', e.target.value)} />
+      </div>
+      {mode === 'tag' && <textarea className="fi" rows={2} placeholder="SID'S SPECIAL / INSIDER TIP" value={f.sid} onChange={e => set('sid', e.target.value)} />}
+      <button className="btn btn-primary" onClick={submit}>
+        <Glyph name="pin" size={14} /> {mode === 'personal' ? 'PIN IT' : 'GENERATE & COPY JSON'}
+      </button>
+    </div>
+  )
+}
+
+// SHA-256 of the TAG password — a speed bump for casual users, NOT real security
+// (client-side code is public). Change: printf 'newpass' | shasum -a 256
+const TAG_HASH = '26abfab626f13890a8944fd242d853025f46ac7173c639146125d7e65ec5bcde'
+
+function TagSection({ onToast }: { onToast: (m: string) => void }) {
+  const [open, setOpen] = useState(false)
+  const [pw, setPw] = useState('')
+  const [ok, setOk] = useState(false)
+  const check = async () => {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(pw))
+    const hex = [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('')
+    if (hex === TAG_HASH) setOk(true)
+    else onToast('WRONG PASSWORD, CHOOM')
+  }
+  const submitTag = async (p: Place) => {
+    await navigator.clipboard.writeText(JSON.stringify(p, null, 2) + ',')
+    window.open('https://github.com/saix0x0/gedi/edit/main/src/data/places.json', '_blank')
+    onToast('JSON COPIED — PASTE INTO places.json & COMMIT')
+  }
+  return (
+    <div className="tag-section">
+      <button className="tag-head" onClick={() => setOpen(o => !o)}>
+        <Glyph name="campus" size={15} /> TAG MEMBERS ONLY
+      </button>
+      {open && !ok && (
+        <div className="frow" style={{ marginTop: 10 }}>
+          <input className="fi" type="password" placeholder="PASSWORD" value={pw} onChange={e => setPw(e.target.value)} onKeyDown={e => e.key === 'Enter' && check()} />
+          <button className="fi fbtn" onClick={check}><Glyph name="check" size={15} /></button>
+        </div>
+      )}
+      {open && ok && (
+        <>
+          <p className="hint">Adds go live for <b>everyone</b>: this copies the place JSON and opens places.json on GitHub — paste inside the list, commit, done (~1 min to deploy). No repo access? Send the copied JSON to Sid.</p>
+          <AddPlaceForm mode="tag" onDone={submitTag} />
+        </>
+      )}
     </div>
   )
 }
