@@ -32,6 +32,8 @@ export default function App() {
   const [filterOpen, setFilterOpen] = useState(false)
   const [district, setDistrict] = useState<District | null>(null)
   const [picking, setPicking] = useState<'personal' | 'tag' | null>(null)
+  const [showQr, setShowQr] = useState(false)
+  const APP_URL = 'https://saix0x0.github.io/gedi/'
 
   const startPick = (mode: 'personal' | 'tag') => {
     setPicking(mode)
@@ -145,6 +147,9 @@ export default function App() {
                 title="Map filters"
               >
                 <Glyph name="funnel" size={18} />
+              </button>
+              <button className="filter-btn" onClick={() => setShowQr(true)} title="Share GEDI">
+                <Glyph name="qr" size={18} />
               </button>
             </div>
             <MapView places={mapPlaces} visited={visited} onSelect={setSelected} onDistrict={setDistrict} theme={theme} routeTo={routeTo} picking={!!picking} onPick={onPick} />
@@ -339,6 +344,30 @@ export default function App() {
               >
                 {visited.has(selected.id) ? 'CONQUERED' : 'MARK VISITED'}
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showQr && (
+        <div className="qr-overlay" onClick={() => setShowQr(false)}>
+          <div className="qr-box" onClick={e => e.stopPropagation()}>
+            <button className="qr-close" onClick={() => setShowQr(false)}><Glyph name="close" size={18} /></button>
+            <div className="qr-title">SCAN TO EXPLORE</div>
+            <div className="qr-sub">Hyderabad, but make it a video game.</div>
+            <div className="qr-frame">
+              <img src={`${import.meta.env.BASE_URL}qr.png`} alt="Scan to open GEDI" />
+            </div>
+            <div className="qr-url">{APP_URL.replace('https://', '')}</div>
+            <div className="qr-actions">
+              <button className="btn btn-ghost" onClick={async () => { await navigator.clipboard.writeText(APP_URL); setToast('LINK COPIED'); setTimeout(() => setToast(null), 2000) }}>
+                <Glyph name="share" size={14} /> COPY LINK
+              </button>
+              {'share' in navigator && (
+                <button className="btn btn-primary" onClick={() => (navigator as Navigator).share({ title: 'GEDI · Hyderabad Explorer', url: APP_URL }).catch(() => {})}>
+                  <Glyph name="share" size={14} /> SHARE
+                </button>
+              )}
             </div>
           </div>
         </div>

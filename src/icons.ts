@@ -37,6 +37,9 @@ const P: Record<string, string> = {
   swords: `<path d="M3 3l8 8M21 3l-8 8M5 13l6 6M19 13l-6 6"/><path d="M3 3h4M3 3v4M21 3h-4M21 3v4M4 17l3 3M20 17l-3 3"/>`,
   camera: `<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7l2-3h4l2 3"/><circle cx="12" cy="13" r="3.5"/>`,
   campus: `<path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M13.2 6.5l-4.7 7h3.2l-1 5 4.8-7h-3.3l1-5z" fill="currentColor" stroke="none"/>`,
+  qr: `<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3M20 14v.01M14 20h.01M17 20h.01M20 17v4"/>`,
+  share: `<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/>`,
+  close: `<path d="M6 6l12 12M18 6L6 18"/>`,
 }
 
 export type IconName = keyof typeof P
