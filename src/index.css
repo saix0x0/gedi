@@ -97,25 +97,14 @@ html[data-theme='rdr'] .filter-btn { background: rgba(211, 196, 155, .94); }
 
 .theme-toggle { background: none; border: none; padding: 0; cursor: pointer; }
 .theme-toggle:active { transform: scale(.92); }
-.tt {
-  display: flex; flex-direction: column; align-items: center; line-height: 1;
-  padding: 5px 9px 6px;
+/* Official game logos (Wikimedia): RDR2 red/white wordmark sits on the dark HUD;
+   CP2077 dark wordmark needs its signature yellow plate */
+.tt-img { height: 34px; display: block; }
+.tt-plate {
+  display: block; background: #fcee0a; padding: 4px 8px;
+  clip-path: polygon(0 0, 100% 0, 100% 62%, 92% 100%, 0 100%);
 }
-.tt em { font-style: normal; display: block; }
-/* Red Dead Redemption logo homage: black plate, red serif caps */
-.tt-rdr {
-  background: #120a06; border: 1px solid #7d2419;
-  font-family: 'Rokkitt', serif; color: #c8402a;
-  font-size: 9px; font-weight: 700; letter-spacing: 1.5px;
-}
-.tt-rdr em { font-size: 6.5px; letter-spacing: 2.5px; color: #e8d9b0; margin-top: 2px; }
-/* Cyberpunk 2077 logo homage: yellow plate, black glitch caps, notched corner */
-.tt-cp {
-  background: #fcee0a; color: #0d0d0d;
-  clip-path: polygon(0 0, 100% 0, 100% 62%, 88% 100%, 0 100%);
-  font-family: 'Oswald', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1px;
-}
-.tt-cp em { font-size: 8px; letter-spacing: 3px; }
+.tt-img-cp { height: 26px; }
 
 .xp-bar {
   height: 6px; border-radius: 3px; background: var(--panel2);

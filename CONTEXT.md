@@ -40,6 +40,11 @@
 - Theme toggle = game-logo homages (`.tt-cp` yellow notched plate / `.tt-rdr` black-red plate) — CSS-drawn, no trademarked assets.
 - Known quirk: synthetic JS click events don't trigger MapLibre handlers (its DOM event manager needs real pointer input) — test district clicks with real clicks/preview_click, not dispatchEvent.
 
+## Polish pass (2026-07-05, fourth pass)
+- Theme toggle = real logos: `public/cp2077.svg` + `public/rdr2.png` (Wikimedia), `<img>` via `import.meta.env.BASE_URL`; CP logo sits on yellow `.tt-plate` (notched). Trademark note in README.
+- Districts redrawn with 8–12 vertices each, loosely tracing Musi/Road No.1/ORR; added KUKATPALLY (#ff9f1c). Richer taglines.
+- Malls added to places.json: inorbit, lulu, gvk-one (19 places total).
+
 ## On the books (user-requested, not built)
 - **Dev login → add locations for everyone**: planned as V2 via Supabase (auth + places table + RLS: only dev role inserts; public read). Until then places.json commits are the admin flow. Keep `getPlaces()` seam.
 

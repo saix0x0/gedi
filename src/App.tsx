@@ -97,8 +97,8 @@ export default function App() {
           onClick={() => setTheme(t => (t === 'cyber' ? 'rdr' : 'cyber'))}
         >
           {theme === 'cyber'
-            ? <span className="tt tt-rdr">RED DEAD<em>REDEMPTION</em></span>
-            : <span className="tt tt-cp">CYBER<em>PUNK</em>2077</span>}
+            ? <img className="tt-img" src={`${import.meta.env.BASE_URL}rdr2.png`} alt="Switch to Red Dead mode" />
+            : <span className="tt-plate"><img className="tt-img tt-img-cp" src={`${import.meta.env.BASE_URL}cp2077.svg`} alt="Switch to Cyberpunk mode" /></span>}
         </button>
         <div className="hud-stats">
           <div className="hud-level">LV {level}</div>

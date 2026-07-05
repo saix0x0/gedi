@@ -9,3 +9,6 @@ Explore Hyderabad like a video game. Built for IIITH freshers — scan the QR, p
 Fully open source, $0 stack: Vite + React + TS + MapLibre GL + CARTO tiles + GitHub Pages.
 
 All places live in `src/data/places.json` — add a place by adding a JSON object, no code changes. See `CONTEXT.md` for architecture.
+
+---
+*Cyberpunk 2077 and Red Dead Redemption II logos are trademarks of CD Projekt and Rockstar Games respectively, used here as a non-commercial student fan homage (sourced from Wikimedia).*
