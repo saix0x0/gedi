@@ -63,7 +63,7 @@ export const DISTRICTS: District[] = [
   },
 ]
 
-export const RDR_INK = '#5a4632'
+export const RDR_INK = '#3a2a18'
 
 export const centroid = (ring: [number, number][]): [number, number] => [
   ring.reduce((s, c) => s + c[0], 0) / ring.length,

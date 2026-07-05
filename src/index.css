@@ -69,13 +69,7 @@ html[data-theme='rdr'] .toast { box-shadow: 0 2px 10px rgba(70, 97, 47, .45); }
 html[data-theme='rdr'] .legend { background: rgba(211, 196, 155, .97); }
 html[data-theme='rdr'] .filter-btn { background: rgba(211, 196, 155, .94); }
 /* parchment-ify the basemap: darker, aged */
-.map-rdr .maplibregl-canvas { filter: sepia(.6) saturate(.9) contrast(1.12) brightness(.92); }
-/* multiply a parchment tone over the tiles: darkens paper, keeps roads crisp */
-.map-rdr .maplibregl-canvas-container::after {
-  content: ''; position: absolute; inset: 0;
-  background: #ab9058; mix-blend-mode: multiply; pointer-events: none;
-}
-.map-rdr .maplibregl-marker { z-index: 1; }
+.map-rdr .maplibregl-canvas { filter: sepia(.62) saturate(.6) contrast(1.4) brightness(.82); }
 /* cyber map: lift slightly so streets read */
 .map:not(.map-rdr) .maplibregl-canvas { filter: brightness(1.25) contrast(.96); }
 

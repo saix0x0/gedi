@@ -326,7 +326,7 @@ export default function App() {
               <div><Glyph name="metro" /><span>{selected.metro}</span></div>
             </div>
             <div className="sid">
-              <div className="sid-title">Sid’s Special</div>
+              <div className="sid-title">Sid’s Certified</div>
               {selected.sid}
             </div>
             <div className="sheet-actions">
@@ -420,7 +420,7 @@ function AddPlaceForm({ mode, places, onDone, onPickOnMap }: { mode: 'personal' 
         <input className="fi" placeholder="BUDGET (₹)" value={f.budget} onChange={e => set('budget', e.target.value)} />
         <input className="fi" placeholder="BEST TIME" value={f.bestTime} onChange={e => set('bestTime', e.target.value)} />
       </div>
-      {mode === 'tag' && <textarea className="fi" rows={2} placeholder="SID'S SPECIAL / INSIDER TIP" value={f.sid} onChange={e => set('sid', e.target.value)} />}
+      {mode === 'tag' && <textarea className="fi" rows={2} placeholder="SID'S CERTIFIED / INSIDER TIP" value={f.sid} onChange={e => set('sid', e.target.value)} />}
       <button className="btn btn-primary" onClick={submit}>
         <Glyph name="pin" size={14} /> {mode === 'personal' ? 'PIN IT' : 'GENERATE & COPY JSON'}
       </button>
