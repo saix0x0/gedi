@@ -32,6 +32,14 @@
 - Tabs renamed: MAP / EXPLORATIONS (quests) / SPECIAL PICKS (collections) / YOUR PICKS (profile + badges + conquered list). Theme toggle shows "2077"/"1899".
 - RDR toned down: bg #c9b98f, map filter sepia(.62) saturate(.52) brightness(.8).
 
+## CP2077 map-language pass (added 2026-07-05, third pass)
+- Districts moved to `src/districts.ts` (+ taglines, `inRing` point-in-polygon, centroid). Single geojson source `districts` with promoteId:'name'; solid borders; feature-state hover/selected drives fill-opacity .04→.16 and line-width 1.2→2.6. Hover via mousemove/mouseleave on `districts-fill`; click via map click + queryRenderedFeatures (tap again = dismiss). Selection survives theme setStyle (re-applied in styledata handler).
+- District info card (`.district-card` in App, CP-style: accent left border, notched corner, "PRIMARY VIBES" + tagline + spots/conquered counts via inRing).
+- Filter legend = left side panel (`.legend`, notched clip-path, vertical rows, accent-bar quest chips).
+- IIIT-H home base crest: `.campus-marker` in MapView init (shield-bolt `campus` glyph, rotating dashed ring).
+- Theme toggle = game-logo homages (`.tt-cp` yellow notched plate / `.tt-rdr` black-red plate) — CSS-drawn, no trademarked assets.
+- Known quirk: synthetic JS click events don't trigger MapLibre handlers (its DOM event manager needs real pointer input) — test district clicks with real clicks/preview_click, not dispatchEvent.
+
 ## On the books (user-requested, not built)
 - **Dev login → add locations for everyone**: planned as V2 via Supabase (auth + places table + RLS: only dev role inserts; public read). Until then places.json commits are the admin flow. Keep `getPlaces()` seam.
 

@@ -3,8 +3,9 @@ import maplibregl from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
 import type { Place, Theme } from './store'
 import { svg, catIcon } from './icons'
+import { DISTRICTS, RDR_INK, centroid, type District } from './districts'
 
-// Default quest origin: IIIT Hyderabad main gate (used until geolocation resolves)
+// Home base: IIIT Hyderabad (also default quest origin until geolocation resolves)
 const IIITH: [number, number] = [78.3489, 17.4455]
 
 const tiles = (path: string) =>
@@ -29,37 +30,41 @@ const QUEST_COLOR: Record<string, string> = {
   special: 'var(--magenta)',
 }
 
-// ---- Districts: CP2077-style territory overlay (rough hand-drawn borders) ----
-interface District { name: string; color: string; ring: [number, number][] }
-const DISTRICTS: District[] = [
-  { name: 'OLD CITY', color: '#ff4d4d', ring: [[78.43, 17.365], [78.455, 17.385], [78.50, 17.38], [78.505, 17.345], [78.46, 17.33], [78.435, 17.34]] },
-  { name: 'CITY CENTER', color: '#ffc857', ring: [[78.44, 17.42], [78.455, 17.445], [78.49, 17.435], [78.492, 17.39], [78.455, 17.385], [78.44, 17.395]] },
-  { name: 'JUBILEE HILLS', color: '#00e5ff', ring: [[78.39, 17.445], [78.44, 17.445], [78.45, 17.415], [78.42, 17.40], [78.395, 17.41]] },
-  { name: 'CYBER DISTRICT', color: '#ff2ea6', ring: [[78.34, 17.475], [78.41, 17.47], [78.415, 17.435], [78.375, 17.425], [78.345, 17.44]] },
-  { name: 'HOME TURF', color: '#3dffa0', ring: [[78.315, 17.435], [78.37, 17.44], [78.375, 17.40], [78.325, 17.395]] },
-  { name: 'SECUNDERABAD', color: '#b58cff', ring: [[78.465, 17.465], [78.52, 17.46], [78.52, 17.43], [78.47, 17.435]] },
-]
-const RDR_INK = '#5a4632'
-
-const centroid = (ring: [number, number][]): [number, number] => [
-  ring.reduce((s, c) => s + c[0], 0) / ring.length,
-  ring.reduce((s, c) => s + c[1], 0) / ring.length,
-]
+// active = hovered or selected → territory lights up (CP2077 map behavior)
+const activeExpr = ['any',
+  ['boolean', ['feature-state', 'hover'], false],
+  ['boolean', ['feature-state', 'selected'], false],
+] as unknown as maplibregl.ExpressionSpecification
 
 function addDistricts(m: maplibregl.Map, theme: Theme) {
   try {
-    for (const d of DISTRICTS) {
-      const id = `dist-${d.name}`
-      if (m.getSource(id)) continue
-      const color = theme === 'rdr' ? RDR_INK : d.color
-      m.addSource(id, {
-        type: 'geojson',
-        data: { type: 'Feature', properties: {}, geometry: { type: 'Polygon', coordinates: [[...d.ring, d.ring[0]]] } },
-      })
-      m.addLayer({ id: `${id}-fill`, type: 'fill', source: id, paint: { 'fill-color': color, 'fill-opacity': theme === 'rdr' ? 0.05 : 0.07 } })
-      m.addLayer({ id: `${id}-line`, type: 'line', source: id, paint: { 'line-color': color, 'line-width': 1.6, 'line-dasharray': [3, 2], 'line-opacity': theme === 'rdr' ? 0.55 : 0.8 } })
-    }
-  } catch { /* style mid-load; next styledata pass will retry */ }
+    if (m.getSource('districts')) return
+    m.addSource('districts', {
+      type: 'geojson',
+      promoteId: 'name',
+      data: {
+        type: 'FeatureCollection',
+        features: DISTRICTS.map(d => ({
+          type: 'Feature' as const,
+          properties: { name: d.name, color: theme === 'rdr' ? RDR_INK : d.color },
+          geometry: { type: 'Polygon' as const, coordinates: [[...d.ring, d.ring[0]]] },
+        })),
+      },
+    })
+    m.addLayer({
+      id: 'districts-fill', type: 'fill', source: 'districts',
+      paint: { 'fill-color': ['get', 'color'], 'fill-opacity': ['case', activeExpr, theme === 'rdr' ? 0.12 : 0.16, 0.04] },
+    })
+    m.addLayer({
+      id: 'districts-line', type: 'line', source: 'districts',
+      layout: { 'line-join': 'round' },
+      paint: {
+        'line-color': ['get', 'color'],
+        'line-width': ['case', activeExpr, 2.6, 1.2],
+        'line-opacity': ['case', activeExpr, 0.95, 0.4],
+      },
+    })
+  } catch { /* style mid-load; retried on next styledata */ }
 }
 
 function clearRoute(m: maplibregl.Map) {
@@ -92,31 +97,66 @@ interface Props {
   places: Place[]
   visited: Set<string>
   onSelect: (p: Place) => void
+  onDistrict: (d: District | null) => void
   theme: Theme
   routeTo: Place | null
 }
 
-export default function MapView({ places, visited, onSelect, theme, routeTo }: Props) {
+export default function MapView({ places, visited, onSelect, onDistrict, theme, routeTo }: Props) {
   const div = useRef<HTMLDivElement>(null)
   const map = useRef<maplibregl.Map | null>(null)
   const markers = useRef<maplibregl.Marker[]>([])
   const origin = useRef<[number, number]>(IIITH)
   const originMarker = useRef<maplibregl.Marker | null>(null)
   const routeCoords = useRef<[number, number][] | null>(null)
+  const hoverId = useRef<string | null>(null)
+  const selectedId = useRef<string | null>(null)
+  const onDistrictRef = useRef(onDistrict)
+  onDistrictRef.current = onDistrict
 
   useEffect(() => {
     if (!div.current) return
     const m = new maplibregl.Map({
       container: div.current,
       style: styleFor(theme),
-      center: [78.43, 17.41],
+      center: [78.41, 17.41],
       zoom: 11.3,
       attributionControl: { compact: true },
     })
     map.current = m
     m.on('load', () => addDistricts(m, theme))
 
-    // District name labels: DOM markers survive setStyle, style via CSS
+    const setState = (id: string | null, key: 'hover' | 'selected', v: boolean) => {
+      if (!id || !m.getSource('districts')) return
+      m.setFeatureState({ source: 'districts', id }, { [key]: v })
+    }
+
+    // Hover (desktop): light the territory up
+    m.on('mousemove', 'districts-fill', e => {
+      const id = (e.features?.[0]?.id as string) ?? null
+      if (id === hoverId.current) return
+      setState(hoverId.current, 'hover', false)
+      hoverId.current = id
+      setState(id, 'hover', true)
+      m.getCanvas().style.cursor = 'pointer'
+    })
+    m.on('mouseleave', 'districts-fill', () => {
+      setState(hoverId.current, 'hover', false)
+      hoverId.current = null
+      m.getCanvas().style.cursor = ''
+    })
+
+    // Click/tap: select territory + surface its info card
+    m.on('click', e => {
+      const feats = m.queryRenderedFeatures(e.point, { layers: m.getLayer('districts-fill') ? ['districts-fill'] : [] })
+      const id = (feats[0]?.id as string) ?? null
+      setState(selectedId.current, 'selected', false)
+      selectedId.current = id === selectedId.current ? null : id // tap again to dismiss
+      setState(selectedId.current, 'selected', true)
+      onDistrictRef.current(DISTRICTS.find(d => d.name === selectedId.current) ?? null)
+    })
+
+    // District name labels: DOM markers survive setStyle, styled via CSS
     for (const d of DISTRICTS) {
       const el = document.createElement('div')
       el.className = 'district-label'
@@ -124,6 +164,12 @@ export default function MapView({ places, visited, onSelect, theme, routeTo }: P
       el.textContent = d.name
       new maplibregl.Marker({ element: el, anchor: 'center' }).setLngLat(centroid(d.ring)).addTo(m)
     }
+
+    // Home base: IIIT-H crest
+    const campus = document.createElement('div')
+    campus.className = 'campus-marker'
+    campus.innerHTML = `<span class="campus-ring"></span><span class="campus-badge">${svg('campus', 20)}</span><span class="marker-label">IIIT-H · HOME BASE</span>`
+    new maplibregl.Marker({ element: campus, anchor: 'center' }).setLngLat(IIITH).addTo(m)
 
     const el = document.createElement('div')
     el.className = 'origin-marker'
@@ -144,7 +190,7 @@ export default function MapView({ places, visited, onSelect, theme, routeTo }: P
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  // Theme switch: swap basemap, then re-add overlays (setStyle wipes layers)
+  // Theme switch: swap basemap, then re-add overlays (setStyle wipes layers + feature state)
   useEffect(() => {
     const m = map.current
     if (!m) return
@@ -152,6 +198,7 @@ export default function MapView({ places, visited, onSelect, theme, routeTo }: P
     m.once('styledata', () => {
       addDistricts(m, theme)
       drawRoute(m, routeCoords.current, theme)
+      if (selectedId.current) m.setFeatureState({ source: 'districts', id: selectedId.current }, { selected: true })
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [theme])

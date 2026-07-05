@@ -5,6 +5,7 @@ import {
   BADGES, COLLECTIONS, type Place, type Quest, type Theme,
 } from './store'
 import { svg, catIcon } from './icons'
+import { inRing, type District } from './districts'
 
 type Tab = 'map' | 'explore' | 'picks' | 'you'
 
@@ -28,6 +29,7 @@ export default function App() {
   const [toast, setToast] = useState<string | null>(null)
   const [theme, setTheme] = useState<Theme>(() => (localStorage.getItem('gedi.theme') as Theme) || 'cyber')
   const [filterOpen, setFilterOpen] = useState(false)
+  const [district, setDistrict] = useState<District | null>(null)
   const [hiddenCats, setHiddenCats] = useState<Set<string>>(new Set())
   const [hiddenQuests, setHiddenQuests] = useState<Set<Quest>>(new Set())
 
@@ -91,10 +93,12 @@ export default function App() {
         </div>
         <button
           className="theme-toggle"
-          title={theme === 'cyber' ? 'Switch to 1899' : 'Switch to 2077'}
+          title={theme === 'cyber' ? 'Switch to Red Dead mode' : 'Switch to Cyberpunk mode'}
           onClick={() => setTheme(t => (t === 'cyber' ? 'rdr' : 'cyber'))}
         >
-          {theme === 'cyber' ? '1899' : '2077'}
+          {theme === 'cyber'
+            ? <span className="tt tt-rdr">RED DEAD<em>REDEMPTION</em></span>
+            : <span className="tt tt-cp">CYBER<em>PUNK</em>2077</span>}
         </button>
         <div className="hud-stats">
           <div className="hud-level">LV {level}</div>
@@ -122,7 +126,19 @@ export default function App() {
                 <Glyph name="funnel" size={18} />
               </button>
             </div>
-            <MapView places={mapPlaces} visited={visited} onSelect={setSelected} theme={theme} routeTo={routeTo} />
+            <MapView places={mapPlaces} visited={visited} onSelect={setSelected} onDistrict={setDistrict} theme={theme} routeTo={routeTo} />
+
+            {/* CP2077 district info card */}
+            {district && !filterOpen && (
+              <div className="district-card" style={{ ['--dc' as string]: theme === 'rdr' ? 'var(--magenta)' : district.color }}>
+                <div className="dc-name">{district.name}</div>
+                <div className="dc-label">PRIMARY VIBES</div>
+                <div className="dc-tag">{district.tagline}</div>
+                <div className="dc-count">
+                  <Glyph name="pin" size={12} /> {places.filter(p => inRing([p.lng, p.lat], district.ring)).length} SPOTS · {places.filter(p => inRing([p.lng, p.lat], district.ring) && visited.has(p.id)).length} CONQUERED
+                </div>
+              </div>
+            )}
 
             {/* CP2077-style filter legend */}
             {filterOpen && (

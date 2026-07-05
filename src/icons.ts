@@ -36,6 +36,7 @@ const P: Record<string, string> = {
   pin: `<path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/>`,
   swords: `<path d="M3 3l8 8M21 3l-8 8M5 13l6 6M19 13l-6 6"/><path d="M3 3h4M3 3v4M21 3h-4M21 3v4M4 17l3 3M20 17l-3 3"/>`,
   camera: `<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7l2-3h4l2 3"/><circle cx="12" cy="13" r="3.5"/>`,
+  campus: `<path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M13.2 6.5l-4.7 7h3.2l-1 5 4.8-7h-3.3l1-5z" fill="currentColor" stroke="none"/>`,
 }
 
 export type IconName = keyof typeof P
