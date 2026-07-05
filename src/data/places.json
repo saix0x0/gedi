@@ -878,6 +878,25 @@
     "tags": ["rocks", "nature", "viewpoint"]
   },
   {
+    "id": "fishermans-wharf",
+    "name": "Fisherman's Wharf",
+    "area": "Gachibowli",
+    "category": "Food",
+    "quest": "special",
+    "collections": ["gourmet", "birthday", "date"],
+    "description": "Big, buzzing coastal-Goan restaurant built for a table full of people — feni-fuelled, seafood-heavy, and loud in the best way. The kind of place a night out actually revolves around.",
+    "lat": 17.4415,
+    "lng": 78.3505,
+    "budget": "₹1200–2000",
+    "bestTime": "Celebrations & big group dinners",
+    "duration": "2–2.5 hrs",
+    "metro": "None — cab/bike",
+    "xp": 65,
+    "maps": "https://maps.google.com/?q=Fisherman's+Wharf+Gachibowli+Hyderabad",
+    "sid": "Sid's go-to for a celebration, a proper dinner, or a friend group just chasing genuinely amazing food. On the side, get the cheese broccoli — non-negotiable, trust the process.",
+    "tags": ["seafood", "goan", "celebration"]
+  },
+  {
     "id": "inorbit",
     "name": "Inorbit Mall",
     "area": "Hitec City",
