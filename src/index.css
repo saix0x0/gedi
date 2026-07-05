@@ -365,6 +365,13 @@ html[data-theme='rdr'] .campus-badge { background: rgba(236, 223, 189, .92); box
 .sheet-handle { width: 40px; height: 4px; border-radius: 2px; background: var(--line); margin: 4px auto 14px; }
 .sheet-head h2 { font-family: var(--display); font-weight: 600; font-size: 23px; letter-spacing: 1px; margin-top: 9px; text-transform: uppercase; }
 .sheet-area { color: var(--dim); font-size: 13px; margin-top: 2px; }
+.approx-note {
+  display: inline-flex; align-items: center; gap: 5px; margin-top: 7px;
+  font-family: var(--display); font-size: 10px; letter-spacing: .5px;
+  color: var(--gold); background: rgba(255, 200, 87, .1);
+  border: 1px solid var(--gold); border-radius: 6px; padding: 4px 8px;
+}
+html[data-theme='rdr'] .approx-note { color: var(--magenta); border-color: var(--magenta); background: rgba(125, 26, 26, .08); }
 .sheet-desc { margin: 14px 0; line-height: 1.55; color: #c9c9dd; font-size: 15px; }
 html[data-theme='rdr'] .sheet-desc { color: #40301a; }
 

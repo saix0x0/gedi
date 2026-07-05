@@ -22,6 +22,7 @@ export interface Place {
   sid: string
   tags: string[]
   by?: string // who's certifying — defaults to Sid
+  approx?: boolean // pin is area-level; Navigate button has the exact spot
 }
 
 // Data layer: V1 reads bundled JSON (+ any locally added places).

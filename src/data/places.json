@@ -5,7 +5,10 @@
     "area": "Old City",
     "category": "Historical",
     "quest": "main",
-    "collections": ["budget", "streetfood"],
+    "collections": [
+      "budget",
+      "streetfood"
+    ],
     "description": "The 430-year-old icon of Hyderabad. Four minarets, chaotic bangle bazaars, and the best people-watching in the city.",
     "lat": 17.3616,
     "lng": 78.4747,
@@ -16,7 +19,11 @@
     "xp": 100,
     "maps": "https://maps.google.com/?q=Charminar,Hyderabad",
     "sid": "Go on a weekday evening. Eat at Nimrah Café right opposite — Irani chai + Osmania biscuits for ₹60 while staring at the Charminar. Unbeatable.",
-    "tags": ["iconic", "bazaar", "photography"]
+    "tags": [
+      "iconic",
+      "bazaar",
+      "photography"
+    ]
   },
   {
     "id": "golconda",
@@ -24,7 +31,11 @@
     "area": "Ibrahim Bagh",
     "category": "Historical",
     "quest": "main",
-    "collections": ["budget", "trek", "date"],
+    "collections": [
+      "budget",
+      "trek",
+      "date"
+    ],
     "description": "Massive 16th-century fort with acoustics so good a clap at the gate is heard at the top. The sunset view from the summit is the best free thing in Hyderabad.",
     "lat": 17.3833,
     "lng": 78.4011,
@@ -35,7 +46,11 @@
     "xp": 120,
     "maps": "https://maps.google.com/?q=Golconda+Fort",
     "sid": "380 steps. Wear real shoes, not chappals. Clap at the entrance dome — a guard will demo the acoustics if you ask.",
-    "tags": ["iconic", "sunset", "trek"]
+    "tags": [
+      "iconic",
+      "sunset",
+      "trek"
+    ]
   },
   {
     "id": "hussain-sagar",
@@ -43,7 +58,11 @@
     "area": "Central HYD",
     "category": "Lake",
     "quest": "main",
-    "collections": ["night", "date", "budget"],
+    "collections": [
+      "night",
+      "date",
+      "budget"
+    ],
     "description": "The giant heart-shaped lake with the Buddha statue in the middle. Tank Bund at night is the city's default hangout stretch.",
     "lat": 17.4239,
     "lng": 78.4738,
@@ -54,7 +73,11 @@
     "xp": 80,
     "maps": "https://maps.google.com/?q=Tank+Bund,Hyderabad",
     "sid": "Take the ₹55 boat to the Buddha statue once, just to say you did. Then get corn from the carts and walk the Bund.",
-    "tags": ["lake", "night", "walk"]
+    "tags": [
+      "lake",
+      "night",
+      "walk"
+    ]
   },
   {
     "id": "salar-jung",
@@ -62,7 +85,10 @@
     "area": "Old City",
     "category": "Museum",
     "quest": "main",
-    "collections": ["budget", "study"],
+    "collections": [
+      "budget",
+      "study"
+    ],
     "description": "One of the world's largest one-man collections. The Veiled Rebecca alone is worth the trip. The musical clock draws a crowd at every hour.",
     "lat": 17.3713,
     "lng": 78.4804,
@@ -73,7 +99,10 @@
     "xp": 90,
     "maps": "https://maps.google.com/?q=Salar+Jung+Museum",
     "sid": "Be at the clock room 5 minutes before any hour. Combine with Charminar — they're 10 minutes apart.",
-    "tags": ["museum", "history"]
+    "tags": [
+      "museum",
+      "history"
+    ]
   },
   {
     "id": "khajaguda",
@@ -81,7 +110,12 @@
     "area": "Khajaguda",
     "category": "Adventure",
     "quest": "side",
-    "collections": ["trek", "budget", "night", "date"],
+    "collections": [
+      "trek",
+      "budget",
+      "night",
+      "date"
+    ],
     "description": "2.5-billion-year-old granite boulders 15 minutes from campus. Sunrise scrambles, sunset views over the city, and full-moon night climbs.",
     "lat": 17.4062,
     "lng": 78.3862,
@@ -92,7 +126,12 @@
     "xp": 110,
     "maps": "https://maps.google.com/?q=Khajaguda+Hillock",
     "sid": "THE classic IIITH escape. Closest real nature to campus. Go with seniors the first time — the good viewpoint isn't the obvious one.",
-    "tags": ["trek", "sunrise", "sunset", "iiith-legend"]
+    "tags": [
+      "trek",
+      "sunrise",
+      "sunset",
+      "iiith-legend"
+    ]
   },
   {
     "id": "durgam-cheruvu",
@@ -100,7 +139,11 @@
     "area": "Madhapur",
     "category": "Lake",
     "quest": "side",
-    "collections": ["date", "night", "budget"],
+    "collections": [
+      "date",
+      "night",
+      "budget"
+    ],
     "description": "The 'Secret Lake' with the glowing cable bridge. Lakefront promenade, rock formations, and the bridge lit up purple at night.",
     "lat": 17.4269,
     "lng": 78.3903,
@@ -111,7 +154,11 @@
     "xp": 70,
     "maps": "https://maps.google.com/?q=Durgam+Cheruvu",
     "sid": "Walk the cable bridge after dark, then descend to the promenade. Cheapest good date in the city.",
-    "tags": ["lake", "bridge", "night"]
+    "tags": [
+      "lake",
+      "bridge",
+      "night"
+    ]
   },
   {
     "id": "lamakaan",
@@ -119,7 +166,11 @@
     "area": "Banjara Hills",
     "category": "Culture",
     "quest": "side",
-    "collections": ["budget", "study", "date"],
+    "collections": [
+      "budget",
+      "study",
+      "date"
+    ],
     "description": "An open cultural space in an old bungalow — plays, standup, film screenings, poetry, most of it free. Dosa and chai at canteen prices.",
     "lat": 17.4126,
     "lng": 78.4472,
@@ -130,7 +181,11 @@
     "xp": 85,
     "maps": "https://maps.google.com/?q=Lamakaan,Hyderabad",
     "sid": "The most 'how did I not know about this' place in Hyderabad. Check lamakaan.com before going — the event makes the visit.",
-    "tags": ["culture", "events", "hidden-gem"]
+    "tags": [
+      "culture",
+      "events",
+      "hidden-gem"
+    ]
   },
   {
     "id": "shilparamam",
@@ -138,7 +193,10 @@
     "area": "Hitec City",
     "category": "Culture",
     "quest": "side",
-    "collections": ["budget", "date"],
+    "collections": [
+      "budget",
+      "date"
+    ],
     "description": "Crafts village next to Hitec City — handicraft stalls, night bazaar during festivals, and a surprisingly peaceful rock garden.",
     "lat": 17.4526,
     "lng": 78.379,
@@ -149,7 +207,10 @@
     "xp": 60,
     "maps": "https://maps.google.com/?q=Shilparamam",
     "sid": "Go during Sankranti or Dasara when the night bazaar is on. Good cheap gift shopping before going home for holidays.",
-    "tags": ["crafts", "bazaar"]
+    "tags": [
+      "crafts",
+      "bazaar"
+    ]
   },
   {
     "id": "kbr-park",
@@ -157,7 +218,10 @@
     "area": "Banjara Hills",
     "category": "Park",
     "quest": "side",
-    "collections": ["budget", "study"],
+    "collections": [
+      "budget",
+      "study"
+    ],
     "description": "390 acres of actual forest in the middle of the richest neighbourhood in the city. Peacocks everywhere at dawn.",
     "lat": 17.4253,
     "lng": 78.4299,
@@ -168,7 +232,10 @@
     "xp": 65,
     "maps": "https://maps.google.com/?q=KBR+National+Park",
     "sid": "Morning walk here + breakfast at Chutneys Jubilee Hills after. Certified reset-your-brain combo during exam season.",
-    "tags": ["nature", "morning"]
+    "tags": [
+      "nature",
+      "morning"
+    ]
   },
   {
     "id": "shah-ghouse",
@@ -176,7 +243,11 @@
     "area": "Tolichowki",
     "category": "Food",
     "quest": "special",
-    "collections": ["gourmet", "budget", "night"],
+    "collections": [
+      "gourmet",
+      "budget",
+      "night"
+    ],
     "description": "The biryani that settles arguments. Also does haleem in Ramzan that people cross the city for. Open till late.",
     "lat": 17.399,
     "lng": 78.409,
@@ -187,7 +258,11 @@
     "xp": 75,
     "maps": "https://maps.google.com/?q=Shah+Ghouse+Tolichowki",
     "sid": "Order the mutton biryani, not chicken. Fight me. One plate feeds two freshers comfortably.",
-    "tags": ["biryani", "haleem", "late-night"]
+    "tags": [
+      "biryani",
+      "haleem",
+      "late-night"
+    ]
   },
   {
     "id": "ram-ki-bandi",
@@ -195,7 +270,11 @@
     "area": "Nampally",
     "category": "Street Food",
     "quest": "special",
-    "collections": ["budget", "streetfood", "night"],
+    "collections": [
+      "budget",
+      "streetfood",
+      "night"
+    ],
     "description": "A street cart that opens at 3 AM and has a queue by 3:15. Butter-drowned tawa dosas that ended the 'best dosa' debate years ago.",
     "lat": 17.385,
     "lng": 78.472,
@@ -206,7 +285,11 @@
     "xp": 150,
     "maps": "https://maps.google.com/?q=Ram+Ki+Bandi+Nampally",
     "sid": "The ultimate post-all-nighter quest. Finish an assignment, grab 3 friends, ride at 3 AM, eat cheese butter dosa, watch the city wake up. Core memory guaranteed.",
-    "tags": ["dosa", "3am", "iiith-legend"]
+    "tags": [
+      "dosa",
+      "3am",
+      "iiith-legend"
+    ]
   },
   {
     "id": "necklace-road",
@@ -214,7 +297,11 @@
     "area": "Central HYD",
     "category": "Night Drive",
     "quest": "side",
-    "collections": ["night", "date", "budget"],
+    "collections": [
+      "night",
+      "date",
+      "budget"
+    ],
     "description": "The lakeside boulevard around Hussain Sagar. The default night-drive loop — lights on the water, street food carts, open till late.",
     "lat": 17.4176,
     "lng": 78.4664,
@@ -225,7 +312,11 @@
     "xp": 55,
     "maps": "https://maps.google.com/?q=Necklace+Road",
     "sid": "Bike loop: Necklace Road → Tank Bund → back via NTR Marg. Do it once after your first internals to feel alive again.",
-    "tags": ["drive", "lake", "night"]
+    "tags": [
+      "drive",
+      "lake",
+      "night"
+    ]
   },
   {
     "id": "karachi-bakery",
@@ -233,7 +324,10 @@
     "area": "Moazzam Jahi Market",
     "category": "Dessert",
     "quest": "special",
-    "collections": ["budget", "gourmet"],
+    "collections": [
+      "budget",
+      "gourmet"
+    ],
     "description": "The original 1953 branch inside the beautiful old Moazzam Jahi Market. Fruit biscuits that every Hyderabadi carries in their luggage.",
     "lat": 17.3872,
     "lng": 78.4735,
@@ -244,7 +338,10 @@
     "xp": 50,
     "maps": "https://maps.google.com/?q=Karachi+Bakery+Moazzam+Jahi+Market",
     "sid": "Buy fruit biscuits here before every trip home. Instant family hero. Also try the famous ice cream shops inside the same market.",
-    "tags": ["bakery", "heritage"]
+    "tags": [
+      "bakery",
+      "heritage"
+    ]
   },
   {
     "id": "birla-mandir",
@@ -252,7 +349,10 @@
     "area": "Naubat Pahad",
     "category": "Temple",
     "quest": "side",
-    "collections": ["budget", "date"],
+    "collections": [
+      "budget",
+      "date"
+    ],
     "description": "White marble temple on a hill with a panoramic view of Hussain Sagar and the whole city glowing at night. Phones locked away — genuinely peaceful.",
     "lat": 17.4062,
     "lng": 78.4691,
@@ -263,7 +363,10 @@
     "xp": 60,
     "maps": "https://maps.google.com/?q=Birla+Mandir+Hyderabad",
     "sid": "No phones allowed inside and that's the best part. The city view at dusk hits different when you can't photograph it.",
-    "tags": ["temple", "viewpoint"]
+    "tags": [
+      "temple",
+      "viewpoint"
+    ]
   },
   {
     "id": "ananthagiri",
@@ -271,7 +374,11 @@
     "area": "Vikarabad (75 km)",
     "category": "Weekend Trip",
     "quest": "special",
-    "collections": ["trek", "birthday", "date"],
+    "collections": [
+      "trek",
+      "birthday",
+      "date"
+    ],
     "description": "The closest real forest to Hyderabad. Dense trails, sunrise viewpoints, coffee plantations. The standard first-year group-trip destination.",
     "lat": 17.2882,
     "lng": 77.8886,
@@ -282,7 +389,12 @@
     "xp": 200,
     "maps": "https://maps.google.com/?q=Ananthagiri+Hills",
     "sid": "The birthday-trip default. 8 people, 4 bikes, leave at 5, breakfast in Vikarabad, trek till noon, sleep the whole ride back. Peak first-year experience.",
-    "tags": ["trek", "sunrise", "group-trip", "iiith-legend"]
+    "tags": [
+      "trek",
+      "sunrise",
+      "group-trip",
+      "iiith-legend"
+    ]
   },
   {
     "id": "calbur-gachibowli",
@@ -290,7 +402,10 @@
     "area": "Gachibowli",
     "category": "Food",
     "quest": "special",
-    "collections": ["budget", "gourmet"],
+    "collections": [
+      "budget",
+      "gourmet"
+    ],
     "description": "The campus lifeline. Officially a Mexican fast-food chain, unofficially the fourth food group of IIITH. Closest branch to campus, hence permanently full of people you know.",
     "lat": 17.4406,
     "lng": 78.3524,
@@ -301,7 +416,11 @@
     "xp": 40,
     "maps": "https://maps.google.com/?q=California+Burrito+Gachibowli",
     "sid": "You will come here after every internals, every breakup, and every stipend credit. Budget accordingly. Burrito bowl + free sauce bar = optimal rupee-to-happiness ratio.",
-    "tags": ["calbur", "burrito", "iiith-legend"]
+    "tags": [
+      "calbur",
+      "burrito",
+      "iiith-legend"
+    ]
   },
   {
     "id": "calbur-madhapur",
@@ -309,7 +428,9 @@
     "area": "Madhapur / Ayyappa Society",
     "category": "Food",
     "quest": "special",
-    "collections": ["budget"],
+    "collections": [
+      "budget"
+    ],
     "description": "Same burritos, corpo crowd. This is where you eat when your internship's office is nearby and you want to feel something familiar among the lanyard people.",
     "lat": 17.4448,
     "lng": 78.3915,
@@ -320,7 +441,10 @@
     "xp": 35,
     "maps": "https://maps.google.com/?q=California+Burrito+Madhapur",
     "sid": "Identical menu to Gachibowli but somehow tastes like ambition and deadline stress. Good Inorbit/cable-bridge combo stop.",
-    "tags": ["calbur", "burrito"]
+    "tags": [
+      "calbur",
+      "burrito"
+    ]
   },
   {
     "id": "calbur-kondapur",
@@ -328,7 +452,9 @@
     "area": "Kondapur",
     "category": "Food",
     "quest": "special",
-    "collections": ["budget"],
+    "collections": [
+      "budget"
+    ],
     "description": "The Sarath City–adjacent branch. For when you're at the mall, the food court queue is a war zone, and you remember burritos exist.",
     "lat": 17.4595,
     "lng": 78.3667,
@@ -339,7 +465,10 @@
     "xp": 35,
     "maps": "https://maps.google.com/?q=California+Burrito+Kondapur",
     "sid": "Pro move: skip the Sarath City food court chaos entirely and eat here before the movie. Nachos travel well into a PVR if you're brave.",
-    "tags": ["calbur", "burrito"]
+    "tags": [
+      "calbur",
+      "burrito"
+    ]
   },
   {
     "id": "calbur-findist",
@@ -347,7 +476,9 @@
     "area": "Nanakramguda",
     "category": "Food",
     "quest": "special",
-    "collections": ["budget"],
+    "collections": [
+      "budget"
+    ],
     "description": "The deep-south branch among the glass towers. Emptiest of the four, which means your order is ready before you finish saying 'extra chipotle'.",
     "lat": 17.4142,
     "lng": 78.3419,
@@ -358,7 +489,10 @@
     "xp": 35,
     "maps": "https://maps.google.com/?q=California+Burrito+Financial+District",
     "sid": "The secret quiet one. Weekend bike ride + empty CalBur + no queue = the burrito speedrun any% world record attempt.",
-    "tags": ["calbur", "burrito"]
+    "tags": [
+      "calbur",
+      "burrito"
+    ]
   },
   {
     "id": "sattva-knowledge-city",
@@ -366,7 +500,11 @@
     "area": "Raidurg / Madhapur",
     "category": "Food",
     "quest": "special",
-    "collections": ["gourmet", "budget", "birthday"],
+    "collections": [
+      "gourmet",
+      "budget",
+      "birthday"
+    ],
     "description": "A glass-tower food hub with a restaurant for every mood and every wallet. Come hungry, leave broke or full — your call.",
     "lat": 17.43379,
     "lng": 78.3814,
@@ -377,7 +515,11 @@
     "xp": 65,
     "maps": "https://maps.google.com/?q=Sattva+Knowledge+City+Hyderabad",
     "sid": "Three tiers of happiness under one roof. Splurge at Burma Burma (yes it's fully veg, yes it'll convert you), vibe out at Hard Rock, or when the wallet's actively crying — get a thali at Haldiram's and pretend that was the plan all along.",
-    "tags": ["restaurants", "food-hub", "gourmet"]
+    "tags": [
+      "restaurants",
+      "food-hub",
+      "gourmet"
+    ]
   },
   {
     "id": "ala-liberty",
@@ -385,7 +527,11 @@
     "area": "Banjara Hills",
     "category": "Food",
     "quest": "special",
-    "collections": ["gourmet", "birthday", "date"],
+    "collections": [
+      "gourmet",
+      "birthday",
+      "date"
+    ],
     "description": "The pure-veg buffet that ended Sid's search. A spread big enough to make skipping breakfast a strategic decision. On Road No. 12, by Century Hospital.",
     "lat": 17.40725,
     "lng": 78.44473,
@@ -396,7 +542,10 @@
     "xp": 75,
     "maps": "https://maps.google.com/?q=Ala+Liberty+Banjara+Hills",
     "sid": "Sid's certified best buffet in the city and the undisputed best birthday spot, full stop. Go genuinely hungry, wear the stretchy pants, and do NOT waste stomach space on the bread basket. Rookie mistake.",
-    "tags": ["buffet", "birthday"]
+    "tags": [
+      "buffet",
+      "birthday"
+    ]
   },
   {
     "id": "taj-falaknuma",
@@ -404,7 +553,11 @@
     "area": "Falaknuma / Old City",
     "category": "Historical",
     "quest": "special",
-    "collections": ["gourmet", "date", "birthday"],
+    "collections": [
+      "gourmet",
+      "date",
+      "birthday"
+    ],
     "description": "An actual Nizam's palace on a hilltop, now a Taj hotel. Marble, peacocks, and the longest dining table you'll ever see.",
     "lat": 17.33093,
     "lng": 78.46726,
@@ -415,7 +568,11 @@
     "xp": 90,
     "maps": "https://maps.google.com/?q=Taj+Falaknuma+Palace",
     "sid": "Skip the buffet — go à la carte and spend the saved money and time actually roaming the palace. You're paying for the marble, the peacocks and the 'I once had tea like a Nizam' story. Do it once before you graduate.",
-    "tags": ["palace", "heritage", "gourmet"]
+    "tags": [
+      "palace",
+      "heritage",
+      "gourmet"
+    ]
   },
   {
     "id": "haiku",
@@ -423,7 +580,10 @@
     "area": "Banjara Hills (Rd 12)",
     "category": "Food",
     "quest": "special",
-    "collections": ["gourmet", "date"],
+    "collections": [
+      "gourmet",
+      "date"
+    ],
     "description": "Dim sum, ramen, and pan-Asian done properly. Dimly lit, date-tier, and exactly as good as the price suggests. Above GoodEarth on Road No. 12.",
     "lat": 17.412,
     "lng": 78.442,
@@ -434,7 +594,11 @@
     "xp": 70,
     "maps": "https://maps.google.com/?q=Haiku+restaurant+Hyderabad",
     "sid": "Sid's favourite Asian in the city, no debate. Bring someone worth it or a stipend that just landed — ideally both. The dim sum is the move.",
-    "tags": ["asian", "dimsum", "date"]
+    "tags": [
+      "asian",
+      "dimsum",
+      "date"
+    ]
   },
   {
     "id": "good-vibes-only",
@@ -442,7 +606,11 @@
     "area": "Khajaguda",
     "category": "Food",
     "quest": "side",
-    "collections": ["gourmet", "date", "study"],
+    "collections": [
+      "gourmet",
+      "date",
+      "study"
+    ],
     "description": "Exactly as aesthetic as the name warns — tucked above an art gallery on Khajaguda–Nanakramguda Rd. Brunch spot with a menu that actually delivers past the wall decor.",
     "lat": 17.413,
     "lng": 78.382,
@@ -453,7 +621,12 @@
     "xp": 45,
     "maps": "https://maps.google.com/?q=Good+Vibes+Only+Cafe+Hyderabad",
     "sid": "Order the Israeli breakfast — shakshuka, pita, the full spread — and thank Sid later. Aesthetic enough for the story, filling enough to skip lunch entirely.",
-    "tags": ["cafe", "breakfast", "brunch"]
+    "tags": [
+      "cafe",
+      "breakfast",
+      "brunch"
+    ],
+    "approx": true
   },
   {
     "id": "dps-khajaguda",
@@ -461,7 +634,9 @@
     "area": "Khajaguda / Gachibowli",
     "category": "School",
     "quest": "special",
-    "collections": ["study"],
+    "collections": [
+      "study"
+    ],
     "description": "Arguably the most meme'd school in the IIITH extended universe — a genuinely solid CBSE school on Lanco Hills Road that's on the map purely because the group chat demanded it.",
     "lat": 17.409,
     "lng": 78.367,
@@ -472,7 +647,11 @@
     "xp": 30,
     "maps": "https://maps.google.com/?q=Delhi+Public+School+Khajaguda+Hyderabad",
     "sid": "Peak schooling energy. Half your seniors and half your situationships went here. Nothing to actually 'do' — it's a school — but it earned legend status, so here it is. IYKYK.",
-    "tags": ["meme", "school", "iiith-legend"]
+    "tags": [
+      "meme",
+      "school",
+      "iiith-legend"
+    ]
   },
   {
     "id": "sattva-knowledge-park",
@@ -480,7 +659,10 @@
     "area": "HITEC City",
     "category": "Office",
     "quest": "side",
-    "collections": ["gourmet", "budget"],
+    "collections": [
+      "gourmet",
+      "budget"
+    ],
     "description": "The OTHER Sattva campus — not the T-Hub one. A full Grade-A office park near Shilpakala Vedika with hidden food courts freshers happily infiltrate.",
     "lat": 17.449,
     "lng": 78.38,
@@ -491,7 +673,11 @@
     "xp": 40,
     "maps": "https://maps.google.com/?q=Sattva+Knowledge+Park+HITEC+City+Hyderabad",
     "sid": "Not to be confused with Knowledge City (that's behind T-Hub). This is the My Home Bhooja side — come for recruiter drives, stay for the surprisingly good canteens.",
-    "tags": ["office", "food-hub"]
+    "tags": [
+      "office",
+      "food-hub"
+    ],
+    "approx": true
   },
   {
     "id": "hyderabad-spice-kitchen",
@@ -499,7 +685,10 @@
     "area": "Gachibowli",
     "category": "Food",
     "quest": "special",
-    "collections": ["budget", "gourmet"],
+    "collections": [
+      "budget",
+      "gourmet"
+    ],
     "description": "A restaurant so confidently named 'Hyderabad Spice Kitchen' in the middle of Hyderabad that you just have to respect the audacity. Solid desi food, zero marketing budget, all vibes.",
     "lat": 17.4438,
     "lng": 78.3512,
@@ -510,7 +699,11 @@
     "xp": 45,
     "maps": "https://maps.google.com/?q=Hyderabad+Spice+Kitchen+Gachibowli",
     "sid": "The 'we can't decide where to eat' default. Nobody has ever left here mad. lmao.",
-    "tags": ["desi", "budget"]
+    "tags": [
+      "desi",
+      "budget"
+    ],
+    "approx": true
   },
   {
     "id": "dlf-street",
@@ -518,7 +711,11 @@
     "area": "Gachibowli · opposite IIITH",
     "category": "Street Food",
     "quest": "side",
-    "collections": ["budget", "streetfood", "night"],
+    "collections": [
+      "budget",
+      "streetfood",
+      "night"
+    ],
     "description": "The DLF road right across from the IIITH gate — a chaotic lineup of carts, rolls and 'let's just eat here' energy. Closest food escape from campus, so it's basically an extension of it.",
     "lat": 17.4468,
     "lng": 78.347,
@@ -529,7 +726,12 @@
     "xp": 40,
     "maps": "https://maps.google.com/?q=17.4468,78.3470",
     "sid": "Post-lab hunger's natural habitat. Come for one roll, leave having eaten four. Nobody's counting.",
-    "tags": ["streetfood", "rolls", "shawarma"]
+    "tags": [
+      "streetfood",
+      "rolls",
+      "shawarma"
+    ],
+    "approx": true
   },
   {
     "id": "udipi-upahar-gachibowli",
@@ -537,7 +739,9 @@
     "area": "Gachibowli",
     "category": "Food",
     "quest": "side",
-    "collections": ["budget"],
+    "collections": [
+      "budget"
+    ],
     "description": "Old-school Udupi joint — dosas, idlis and filter coffee that actually slaps. South Indian breakfast done right and cheap.",
     "lat": 17.4425,
     "lng": 78.3535,
@@ -548,7 +752,12 @@
     "xp": 35,
     "maps": "https://maps.google.com/?q=Udipi+Upahar+Gachibowli",
     "sid": "The 8 AM lecture survival kit. Get the ghee podi dosa and a filter coffee. Thank Sid by lunch.",
-    "tags": ["southindian", "breakfast", "budget"]
+    "tags": [
+      "southindian",
+      "breakfast",
+      "budget"
+    ],
+    "approx": true
   },
   {
     "id": "udipi-upahar-manikonda",
@@ -556,7 +765,9 @@
     "area": "Manikonda",
     "category": "Food",
     "quest": "side",
-    "collections": ["budget"],
+    "collections": [
+      "budget"
+    ],
     "description": "The Manikonda outpost of the beloved Udupi breakfast machine — same crisp dosas, same honest filter coffee, closer if you're a PG-side fresher.",
     "lat": 17.4012,
     "lng": 78.3852,
@@ -567,7 +778,12 @@
     "xp": 35,
     "maps": "https://maps.google.com/?q=Udipi+Upahar+Manikonda",
     "sid": "PG-side breakfast HQ. Idli-vada plate + filter coffee, and your morning is fixed.",
-    "tags": ["southindian", "breakfast", "budget"]
+    "tags": [
+      "southindian",
+      "breakfast",
+      "budget"
+    ],
+    "approx": true
   },
   {
     "id": "bawarchi-madhapur",
@@ -575,10 +791,13 @@
     "area": "Madhapur",
     "category": "Food",
     "quest": "side",
-    "collections": ["budget", "gourmet"],
+    "collections": [
+      "budget",
+      "gourmet"
+    ],
     "description": "The Madhapur outpost of Hyderabad's most argued-about biryani name. Big portions, bigger weekend queues.",
-    "lat": 17.4462,
-    "lng": 78.3922,
+    "lat": 17.4412,
+    "lng": 78.39165,
     "budget": "₹250–400",
     "bestTime": "Dinner",
     "duration": "1 hr",
@@ -586,7 +805,10 @@
     "xp": 45,
     "maps": "https://maps.google.com/?q=Bawarchi+Madhapur+Hyderabad",
     "sid": "",
-    "tags": ["biryani"]
+    "tags": [
+      "biryani"
+    ],
+    "approx": false
   },
   {
     "id": "mehfil-madhapur",
@@ -594,7 +816,9 @@
     "area": "Madhapur",
     "category": "Food",
     "quest": "side",
-    "collections": ["budget"],
+    "collections": [
+      "budget"
+    ],
     "description": "Reliable Hyderabadi biryani and mandi, open late and almost always packed. A Madhapur staple.",
     "lat": 17.4478,
     "lng": 78.3902,
@@ -605,7 +829,12 @@
     "xp": 40,
     "maps": "https://maps.google.com/?q=Mehfil+Restaurant+Madhapur",
     "sid": "",
-    "tags": ["biryani", "mandi", "late-night"]
+    "tags": [
+      "biryani",
+      "mandi",
+      "late-night"
+    ],
+    "approx": true
   },
   {
     "id": "little-italy",
@@ -613,7 +842,10 @@
     "area": "Jubilee Hills",
     "category": "Food",
     "quest": "special",
-    "collections": ["gourmet", "date"],
+    "collections": [
+      "gourmet",
+      "date"
+    ],
     "description": "Upscale vegetarian Italian — wood-fired pizzas, risottos, the works. The ambience does a lot of the talking, and the food backs it up.",
     "lat": 17.41603,
     "lng": 78.41682,
@@ -624,7 +856,11 @@
     "xp": 55,
     "maps": "https://maps.google.com/?q=Little+Italy+Jubilee+Hills+Hyderabad",
     "sid": "Sid rates the ambience AND the food, which is rare. Date-night tier — pizzas are the safe bet, the risotto's the flex.",
-    "tags": ["italian", "veg", "date"]
+    "tags": [
+      "italian",
+      "veg",
+      "date"
+    ]
   },
   {
     "id": "fire-water",
@@ -632,7 +868,11 @@
     "area": "Jubilee Hills",
     "category": "Bar",
     "quest": "special",
-    "collections": ["date", "night", "gourmet"],
+    "collections": [
+      "date",
+      "night",
+      "gourmet"
+    ],
     "description": "Moody lounge-bar with lighting that makes everyone look 20% cooler. The food holds its own well past the vibes.",
     "lat": 17.4298,
     "lng": 78.4102,
@@ -643,7 +883,12 @@
     "xp": 55,
     "maps": "https://maps.google.com/?q=Fire+Water+bar+Hyderabad",
     "sid": "Here for the ambience first, food a very close second — both certified. Go when you want the night to feel like a movie.",
-    "tags": ["lounge", "bar", "date"]
+    "tags": [
+      "lounge",
+      "bar",
+      "date"
+    ],
+    "approx": true
   },
   {
     "id": "niloufer-lakdikapul",
@@ -651,10 +896,13 @@
     "area": "Lakdikapul",
     "category": "Cafe",
     "quest": "special",
-    "collections": ["budget", "streetfood"],
+    "collections": [
+      "budget",
+      "streetfood"
+    ],
     "description": "The legendary Irani cafe. Osmania biscuits and chai that the whole city quietly measures every other chai against.",
-    "lat": 17.403,
-    "lng": 78.4608,
+    "lat": 17.4006,
+    "lng": 78.46285,
     "budget": "₹50–120",
     "bestTime": "Morning or evening",
     "duration": "30 min",
@@ -662,7 +910,12 @@
     "xp": 50,
     "maps": "https://maps.google.com/?q=Niloufer+Cafe+Lakdikapul",
     "sid": "The OG. Irani chai + Osmania biscuit, no substitutions accepted. The bus-stand-adjacent chaos is part of the experience.",
-    "tags": ["chai", "irani", "heritage"]
+    "tags": [
+      "chai",
+      "irani",
+      "heritage"
+    ],
+    "approx": false
   },
   {
     "id": "niloufer-bhooja",
@@ -670,7 +923,9 @@
     "area": "HITEC City",
     "category": "Cafe",
     "quest": "side",
-    "collections": ["budget"],
+    "collections": [
+      "budget"
+    ],
     "description": "The newer, comfier Niloufer near My Home Bhooja — same chai legend, actual seating, far less chaos.",
     "lat": 17.447,
     "lng": 78.3835,
@@ -681,7 +936,11 @@
     "xp": 40,
     "maps": "https://maps.google.com/?q=Niloufer+Cafe+My+Home+Bhooja+Hyderabad",
     "sid": "For when you want the Niloufer chai without the Lakdikapul crowd. Same biscuits, cushier chairs.",
-    "tags": ["chai", "irani"]
+    "tags": [
+      "chai",
+      "irani"
+    ],
+    "approx": true
   },
   {
     "id": "underdogs",
@@ -689,7 +948,10 @@
     "area": "Gachibowli",
     "category": "Bar",
     "quest": "special",
-    "collections": ["gourmet", "night"],
+    "collections": [
+      "gourmet",
+      "night"
+    ],
     "description": "Sports bar and grill with a continental menu that punches well above its pay grade. Screens on, plates loaded.",
     "lat": 17.4305,
     "lng": 78.3438,
@@ -700,18 +962,26 @@
     "xp": 55,
     "maps": "https://maps.google.com/?q=Underdogs+Sports+Bar+Grill+Gachibowli",
     "sid": "Sid's continental pick — the grills and burgers are the move. Match night makes it electric.",
-    "tags": ["continental", "sportsbar", "grill"]
+    "tags": [
+      "continental",
+      "sportsbar",
+      "grill"
+    ],
+    "approx": true
   },
   {
     "id": "buffalo-wild-wings",
     "name": "Buffalo Wild Wings",
-    "area": "Gachibowli",
+    "area": "Kokapet",
     "category": "Bar",
     "quest": "special",
-    "collections": ["night", "gourmet"],
+    "collections": [
+      "night",
+      "gourmet"
+    ],
     "description": "Wings, sauces on a heat scale from 'mild' to 'why did I do that', and every screen showing something worth yelling at.",
-    "lat": 17.4258,
-    "lng": 78.3442,
+    "lat": 17.40077,
+    "lng": 78.33863,
     "budget": "₹900–1600",
     "bestTime": "F1 Sundays, cricket & football nights",
     "duration": "2–3 hrs",
@@ -719,7 +989,13 @@
     "xp": 60,
     "maps": "https://maps.google.com/?q=Buffalo+Wild+Wings+Hyderabad",
     "sid": "PEAK screening spot. F1 Sundays, cricket nights, football weekends — grab the wings, pick your sauce bravely, lose your voice.",
-    "tags": ["wings", "sportsbar", "screening", "iiith-legend"]
+    "tags": [
+      "wings",
+      "sportsbar",
+      "screening",
+      "iiith-legend"
+    ],
+    "approx": false
   },
   {
     "id": "brew-house",
@@ -727,7 +1003,9 @@
     "area": "Gachibowli",
     "category": "Bar",
     "quest": "side",
-    "collections": ["night"],
+    "collections": [
+      "night"
+    ],
     "description": "Brewery plus big screens. Fresh brews and IPL nights that turn the whole floor into a stadium.",
     "lat": 17.4352,
     "lng": 78.3482,
@@ -738,7 +1016,12 @@
     "xp": 50,
     "maps": "https://maps.google.com/?q=Brew+House+Gachibowli+Hyderabad",
     "sid": "IPL-season HQ. Get a table early on match nights or you're standing. The brews are genuinely good too.",
-    "tags": ["brewery", "screening", "ipl"]
+    "tags": [
+      "brewery",
+      "screening",
+      "ipl"
+    ],
+    "approx": true
   },
   {
     "id": "biryani-times-madhapur",
@@ -746,7 +1029,9 @@
     "area": "Madhapur",
     "category": "Food",
     "quest": "side",
-    "collections": ["budget"],
+    "collections": [
+      "budget"
+    ],
     "description": "The FIITJEE-Madhapur legend — where coaching-class survivors refuel on shawarma and biryani between mock tests.",
     "lat": 17.4492,
     "lng": 78.3938,
@@ -757,7 +1042,12 @@
     "xp": 40,
     "maps": "https://maps.google.com/?q=Biryani+Times+Madhapur",
     "sid": "If you did FIITJEE Madhapur, this is a core memory. Peak shawarma AND biryani under one tiny roof — nostalgia hits different here.",
-    "tags": ["biryani", "shawarma", "fiitjee"]
+    "tags": [
+      "biryani",
+      "shawarma",
+      "fiitjee"
+    ],
+    "approx": true
   },
   {
     "id": "patiala-plate",
@@ -765,10 +1055,13 @@
     "area": "Gachibowli · near IIITH",
     "category": "Food",
     "quest": "special",
-    "collections": ["budget", "gourmet"],
+    "collections": [
+      "budget",
+      "gourmet"
+    ],
     "description": "Hearty North Indian a short walk from campus — parathas, dal makhani and rajma that taste like somebody's mom is in the kitchen.",
-    "lat": 17.4432,
-    "lng": 78.3515,
+    "lat": 17.44219,
+    "lng": 78.35695,
     "budget": "₹200–400",
     "bestTime": "Lunch or dinner",
     "duration": "1 hr",
@@ -776,7 +1069,12 @@
     "xp": 45,
     "maps": "https://maps.google.com/?q=Patiala+Plate+Gachibowli",
     "sid": "Sharma ji will NOT stop insisting you come here when the North Indian craving hits — and honestly, he's right. Homestyle food, campus-adjacent, wallet-friendly.",
-    "tags": ["northindian", "budget", "homestyle"]
+    "tags": [
+      "northindian",
+      "budget",
+      "homestyle"
+    ],
+    "approx": false
   },
   {
     "id": "haze-gachibowli",
@@ -784,7 +1082,9 @@
     "area": "Gachibowli",
     "category": "Bar",
     "quest": "side",
-    "collections": ["night"],
+    "collections": [
+      "night"
+    ],
     "description": "Gachibowli's kitchen-and-bar hang — cocktails, loud nights, the works.",
     "lat": 17.4382,
     "lng": 78.3522,
@@ -795,7 +1095,12 @@
     "xp": 45,
     "maps": "https://maps.google.com/?q=Haze+Kitchen+and+Bar+Gachibowli",
     "sid": "💀",
-    "tags": ["bar", "cocktails", "night"]
+    "tags": [
+      "bar",
+      "cocktails",
+      "night"
+    ],
+    "approx": true
   },
   {
     "id": "5th-avenue-sainikpuri",
@@ -803,7 +1108,11 @@
     "area": "Sainikpuri",
     "category": "Street Food",
     "quest": "special",
-    "collections": ["streetfood", "budget", "night"],
+    "collections": [
+      "streetfood",
+      "budget",
+      "night"
+    ],
     "description": "A long strip in Sainikpuri lined end-to-end with cafes, restaurants and street-food carts — the kind of road where you park once and graze your way down it.",
     "lat": 17.4805,
     "lng": 78.535,
@@ -815,7 +1124,12 @@
     "maps": "https://maps.google.com/?q=5th+Avenue+Bakery+Sainikpuri+Secunderabad",
     "sid": "Advait's home-turf crawl — one long street, dozens of options, zero need to decide beforehand. Start at the bakery, end wherever you're full.",
     "by": "Advait",
-    "tags": ["streetfood", "cafes", "food-street"]
+    "tags": [
+      "streetfood",
+      "cafes",
+      "food-street"
+    ],
+    "approx": true
   },
   {
     "id": "sindhi-colony",
@@ -823,7 +1137,10 @@
     "area": "Secunderabad",
     "category": "Street Food",
     "quest": "side",
-    "collections": ["streetfood", "budget"],
+    "collections": [
+      "streetfood",
+      "budget"
+    ],
     "description": "The vegetarian's promised land — a dense cluster of street food and eateries where being veg is the default, not an afterthought.",
     "lat": 17.44122,
     "lng": 78.48105,
@@ -835,7 +1152,11 @@
     "maps": "https://maps.google.com/?q=Sindhi+Colony+Secunderabad",
     "sid": "Advait's veg HQ. If you've ever been the only vegetarian in the group staring down a biryani menu, this is your redemption arc.",
     "by": "Advait",
-    "tags": ["streetfood", "veg", "budget"]
+    "tags": [
+      "streetfood",
+      "veg",
+      "budget"
+    ]
   },
   {
     "id": "santosh-dhaba-pan-bazar",
@@ -843,7 +1164,10 @@
     "area": "Secunderabad",
     "category": "Food",
     "quest": "special",
-    "collections": ["budget", "gourmet"],
+    "collections": [
+      "budget",
+      "gourmet"
+    ],
     "description": "Highway-dhaba energy dropped into the middle of the city — hearty, unfussy plates that keep people coming back on loop.",
     "lat": 17.4348,
     "lng": 78.4901,
@@ -855,7 +1179,11 @@
     "maps": "https://maps.google.com/?q=Santosh+Dhaba+Pan+Bazar+Secunderabad",
     "sid": "A full-blown personal obsession of Advait's, his words. When someone's THAT sure about a dhaba, you go find out why.",
     "by": "Advait",
-    "tags": ["dhaba", "northindian"]
+    "tags": [
+      "dhaba",
+      "northindian"
+    ],
+    "approx": true
   },
   {
     "id": "mahendra-hills",
@@ -863,10 +1191,14 @@
     "area": "East Marredpally",
     "category": "Adventure",
     "quest": "side",
-    "collections": ["trek", "date", "study"],
+    "collections": [
+      "trek",
+      "date",
+      "study"
+    ],
     "description": "A pocket of natural rocks and old trees tucked into the city — the sit-on-a-boulder-and-actually-breathe kind of spot, rare for this side of town.",
-    "lat": 17.452,
-    "lng": 78.504,
+    "lat": 17.45286,
+    "lng": 78.51955,
     "budget": "₹0",
     "bestTime": "Early morning or sunset",
     "duration": "1.5 hrs",
@@ -875,18 +1207,27 @@
     "maps": "https://maps.google.com/?q=Mahendra+Hills+East+Marredpally+Secunderabad",
     "sid": "Advait's calm-down spot — natural rocks, big trees, good air. Go when the city gets to be too much.",
     "by": "Advait",
-    "tags": ["rocks", "nature", "viewpoint"]
+    "tags": [
+      "rocks",
+      "nature",
+      "viewpoint"
+    ],
+    "approx": false
   },
   {
     "id": "fishermans-wharf",
     "name": "Fisherman's Wharf",
-    "area": "Gachibowli",
+    "area": "Financial District / Kokapet",
     "category": "Food",
     "quest": "special",
-    "collections": ["gourmet", "birthday", "date"],
+    "collections": [
+      "gourmet",
+      "birthday",
+      "date"
+    ],
     "description": "Big, buzzing coastal-Goan restaurant built for a table full of people — feni-fuelled, seafood-heavy, and loud in the best way. The kind of place a night out actually revolves around.",
-    "lat": 17.4415,
-    "lng": 78.3505,
+    "lat": 17.4111,
+    "lng": 78.3318,
     "budget": "₹1200–2000",
     "bestTime": "Celebrations & big group dinners",
     "duration": "2–2.5 hrs",
@@ -894,7 +1235,12 @@
     "xp": 65,
     "maps": "https://maps.google.com/?q=Fisherman's+Wharf+Gachibowli+Hyderabad",
     "sid": "Sid's go-to for a celebration, a proper dinner, or a friend group just chasing genuinely amazing food. On the side, get the cheese broccoli — non-negotiable, trust the process.",
-    "tags": ["seafood", "goan", "celebration"]
+    "tags": [
+      "seafood",
+      "goan",
+      "celebration"
+    ],
+    "approx": false
   },
   {
     "id": "inorbit",
@@ -902,7 +1248,11 @@
     "area": "Hitec City",
     "category": "Mall",
     "quest": "side",
-    "collections": ["birthday", "gourmet", "date"],
+    "collections": [
+      "birthday",
+      "gourmet",
+      "date"
+    ],
     "description": "The OG tech-crowd mall next to the cable bridge. Rooftop food court view of Durgam Cheruvu, solid brand lineup, and the default 'let's just go somewhere' answer for the Hitec side of the city.",
     "lat": 17.4348,
     "lng": 78.3866,
@@ -913,7 +1263,11 @@
     "xp": 45,
     "maps": "https://maps.google.com/?q=Inorbit+Mall+Hyderabad",
     "sid": "Combo move: Inorbit first, then walk to the cable bridge at sunset. Two quests, one trip.",
-    "tags": ["mall", "movies", "food-court"]
+    "tags": [
+      "mall",
+      "movies",
+      "food-court"
+    ]
   },
   {
     "id": "lulu",
@@ -921,7 +1275,10 @@
     "area": "Kukatpally",
     "category": "Mall",
     "quest": "side",
-    "collections": ["birthday", "gourmet"],
+    "collections": [
+      "birthday",
+      "gourmet"
+    ],
     "description": "The mega mall of the north — one of the biggest in the city. A food court the size of a football field, a hypermarket where you WILL get lost, and enough floors to count as cardio.",
     "lat": 17.4937,
     "lng": 78.3996,
@@ -932,7 +1289,11 @@
     "xp": 50,
     "maps": "https://maps.google.com/?q=Lulu+Mall+Hyderabad",
     "sid": "Metro straight to KPHB and walk. Do NOT drive here on a weekend — the parking queue is longer than the movie.",
-    "tags": ["mall", "hypermarket", "food-court"]
+    "tags": [
+      "mall",
+      "hypermarket",
+      "food-court"
+    ]
   },
   {
     "id": "gvk-one",
@@ -940,7 +1301,10 @@
     "area": "Banjara Hills",
     "category": "Mall",
     "quest": "side",
-    "collections": ["gourmet", "date"],
+    "collections": [
+      "gourmet",
+      "date"
+    ],
     "description": "The classy compact mall on Road No.1. Smaller than the mega malls but posher — good restaurants, PVR, and Banjara Hills people-watching.",
     "lat": 17.4188,
     "lng": 78.4483,
@@ -951,7 +1315,11 @@
     "xp": 40,
     "maps": "https://maps.google.com/?q=GVK+One+Mall",
     "sid": "Pair it with KBR park morning walk or Jubilee café hop. This is the 'parents are visiting' mall.",
-    "tags": ["mall", "movies", "posh"]
+    "tags": [
+      "mall",
+      "movies",
+      "posh"
+    ]
   },
   {
     "id": "sarath-city",
@@ -959,7 +1327,10 @@
     "area": "Kondapur",
     "category": "Mall",
     "quest": "side",
-    "collections": ["birthday", "gourmet"],
+    "collections": [
+      "birthday",
+      "gourmet"
+    ],
     "description": "One of India's biggest malls, 10 minutes from campus. Gaming zone, bowling, food court the size of a stadium.",
     "lat": 17.4574,
     "lng": 78.3653,
@@ -970,6 +1341,10 @@
     "xp": 45,
     "maps": "https://maps.google.com/?q=Sarath+City+Capital+Mall",
     "sid": "Birthday plan when nobody can decide: bowling + arcade + food court. Works every time. AMB Cinemas here is the fancy movie option.",
-    "tags": ["mall", "gaming", "movies"]
+    "tags": [
+      "mall",
+      "gaming",
+      "movies"
+    ]
   }
 ]

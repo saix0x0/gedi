@@ -342,6 +342,9 @@ export default function App() {
               </div>
               <h2>{selected.name}</h2>
               <div className="sheet-area">{selected.area}</div>
+              {selected.approx && (
+                <div className="approx-note"><Glyph name="pin" size={12} /> Approx pin — tap Navigate for the exact spot</div>
+              )}
             </div>
             <p className="sheet-desc">{selected.description}</p>
             <div className="facts">
