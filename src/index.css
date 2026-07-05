@@ -182,6 +182,7 @@ html[data-theme='rdr'] .legend-head { color: var(--magenta); }
 .lq-main { color: var(--gold); border-left-color: var(--gold); }
 .lq-side { color: var(--cyan); border-left-color: var(--cyan); }
 .lq-special { color: var(--magenta); border-left-color: var(--magenta); }
+.lq-curator { color: var(--green); border-left-color: var(--green); }
 .legend-quest.off, .legend-item.off { opacity: .32; filter: grayscale(.8); }
 .legend-grid { display: flex; flex-direction: column; gap: 5px; }
 .legend-item {

@@ -55,6 +55,7 @@ export default function App() {
   }, [])
   const [hiddenCats, setHiddenCats] = useState<Set<string>>(new Set())
   const [hiddenQuests, setHiddenQuests] = useState<Set<Quest>>(new Set())
+  const [hiddenBy, setHiddenBy] = useState<Set<string>>(new Set())
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme
@@ -91,20 +92,31 @@ export default function App() {
     return [...m.entries()].sort((a, b) => b[1] - a[1])
   }, [places])
 
+  // Curators: 'Sid' (places with no `by`) first, then anyone else, with counts
+  const curators = useMemo(() => {
+    const m = new Map<string, number>()
+    places.forEach(p => { const k = p.by || 'Sid'; m.set(k, (m.get(k) || 0) + 1) })
+    return [...m.entries()].sort((a, b) => (a[0] === 'Sid' ? -1 : b[0] === 'Sid' ? 1 : b[1] - a[1]))
+  }, [places])
+
   const mapPlaces = useMemo(() => {
     const q = query.trim().toLowerCase()
     return places.filter(p =>
       !hiddenCats.has(p.category) &&
       !hiddenQuests.has(p.quest) &&
+      !hiddenBy.has(p.by || 'Sid') &&
       (!q || [p.name, p.area, p.category, ...p.tags].join(' ').toLowerCase().includes(q)))
-  }, [places, query, hiddenCats, hiddenQuests])
+  }, [places, query, hiddenCats, hiddenQuests, hiddenBy])
 
-  const filtersActive = hiddenCats.size + hiddenQuests.size > 0
+  const filtersActive = hiddenCats.size + hiddenQuests.size + hiddenBy.size > 0
 
   const toggleCat = (c: string) =>
     setHiddenCats(prev => { const n = new Set(prev); n.has(c) ? n.delete(c) : n.add(c); return n })
   const toggleQuest = (q: Quest) =>
     setHiddenQuests(prev => { const n = new Set(prev); n.has(q) ? n.delete(q) : n.add(q); return n })
+  const toggleBy = (b: string) =>
+    setHiddenBy(prev => { const n = new Set(prev); n.has(b) ? n.delete(b) : n.add(b); return n })
+  const curatorLabel = (c: string) => (c === 'Sid' ? "SID'S SPECIALS" : `${c.toUpperCase()} RECOMMENDS`)
 
   return (
     <div className="app">
@@ -187,13 +199,21 @@ export default function App() {
               <div className="legend">
                 <div className="legend-head">
                   <span>MAP FILTERS</span>
-                  <button className="legend-all" onClick={() => { setHiddenCats(new Set()); setHiddenQuests(new Set()) }}>SHOW ALL</button>
+                  <button className="legend-all" onClick={() => { setHiddenCats(new Set()); setHiddenQuests(new Set()); setHiddenBy(new Set()) }}>SHOW ALL</button>
                   <button className="legend-x" onClick={() => setFilterOpen(false)}><Glyph name="check" size={15} /> DONE</button>
                 </div>
                 <div className="legend-quests">
                   {(['main', 'side', 'special'] as Quest[]).map(q => (
                     <button key={q} className={`legend-quest lq-${q} ${hiddenQuests.has(q) ? 'off' : ''}`} onClick={() => toggleQuest(q)}>
                       <Glyph name={QUEST_META[q].icon} size={14} /> {QUEST_META[q].label.toUpperCase()}
+                    </button>
+                  ))}
+                </div>
+                <div className="legend-quests">
+                  {curators.map(([c, n]) => (
+                    <button key={c} className={`legend-quest lq-curator ${hiddenBy.has(c) ? 'off' : ''}`} onClick={() => toggleBy(c)}>
+                      <Glyph name={c === 'Sid' ? 'star' : 'user'} size={14} /> {curatorLabel(c)}
+                      <span className="legend-n" style={{ marginLeft: 'auto' }}>{n}</span>
                     </button>
                   ))}
                 </div>
