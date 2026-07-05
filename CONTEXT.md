@@ -20,8 +20,12 @@
 - `.maplibregl-map` sets `position:relative` on its container → `.map` needs `position:absolute !important`.
 - Vite `base: '/gedi/'` — dev URL is `localhost:5173/gedi/`.
 
+## Themes & quest path (added 2026-07-05)
+- Two themes: `cyber` (default, Rajdhani/Orbitron fonts — Rajdhani IS Cyberpunk 2077's UI font) and `rdr` (Rye + Georgia, parchment). Toggle in HUD, persisted `gedi.theme`, applied as `data-theme` on <html>; all styling via CSS var overrides in index.css. RDR map = CARTO voyager tiles + CSS sepia filter (.map-rdr).
+- Quest path: selecting a place draws glowing dashed route (OSRM public demo API, straight-line fallback) from user geolocation (fallback: IIITH campus 78.3489,17.4455) to the place. Route persists after sheet closes (separate `routeTo` state). Redraw needed after setStyle (theme switch wipes layers) — handled via routeCoords ref + styledata listener.
+
 ## State (2026-07-05)
-Done: full V1 loop working (map → marker → card → mark visited → XP/level/badges), quests/collections/profile tabs, search, mobile-verified via preview.
+Done: full V1 loop working (map → marker → card → mark visited → XP/level/badges), quests/collections/profile tabs, search, game fonts, RDR theme toggle, glowing quest paths. All mobile-verified via preview.
 Next up (user's roadmap): more places (target 60–100), real photos per place, "add your own location" UI backed by addLocalPlace, QR generation, leaderboard/social (V2, needs Supabase), transfer repo to tag-iiith.
 
 ## User preferences

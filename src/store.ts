@@ -1,6 +1,7 @@
 import placesData from './data/places.json'
 
 export type Quest = 'main' | 'side' | 'special'
+export type Theme = 'cyber' | 'rdr'
 
 export interface Place {
   id: string

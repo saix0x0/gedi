@@ -1,8 +1,8 @@
-import { useMemo, useState, useCallback } from 'react'
+import { useEffect, useMemo, useState, useCallback } from 'react'
 import MapView from './MapView'
 import {
   getPlaces, getVisited, setVisited as persistVisited, totalXp, levelFromXp,
-  BADGES, COLLECTIONS, type Place, type Quest,
+  BADGES, COLLECTIONS, type Place, type Quest, type Theme,
 } from './store'
 
 type Tab = 'map' | 'quests' | 'collections' | 'you'
@@ -17,9 +17,21 @@ export default function App() {
   const places = useMemo(() => getPlaces(), [])
   const [visited, setVisitedState] = useState<Set<string>>(() => getVisited())
   const [tab, setTab] = useState<Tab>('map')
-  const [selected, setSelected] = useState<Place | null>(null)
+  const [selected, setSelectedState] = useState<Place | null>(null)
+  const [routeTo, setRouteTo] = useState<Place | null>(null) // path persists after sheet closes
   const [query, setQuery] = useState('')
   const [toast, setToast] = useState<string | null>(null)
+  const [theme, setTheme] = useState<Theme>(() => (localStorage.getItem('gedi.theme') as Theme) || 'cyber')
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme
+    localStorage.setItem('gedi.theme', theme)
+  }, [theme])
+
+  const setSelected = useCallback((p: Place | null) => {
+    setSelectedState(p)
+    if (p) setRouteTo(p)
+  }, [])
 
   const xp = totalXp(visited)
   const { level, progress } = levelFromXp(xp)
@@ -55,6 +67,13 @@ export default function App() {
           <span className="logo">GEDI</span>
           <span className="hud-sub">Hyderabad Explorer</span>
         </div>
+        <button
+          className="theme-toggle"
+          title={theme === 'cyber' ? 'Switch to Frontier mode' : 'Switch to Night City mode'}
+          onClick={() => setTheme(t => (t === 'cyber' ? 'rdr' : 'cyber'))}
+        >
+          {theme === 'cyber' ? '🤠' : '🌆'}
+        </button>
         <div className="hud-stats">
           <div className="hud-level">LV {level}</div>
           <div className="xp-bar"><div className="xp-fill" style={{ width: `${progress * 100}%` }} /></div>
@@ -72,7 +91,7 @@ export default function App() {
               value={query}
               onChange={e => setQuery(e.target.value)}
             />
-            <MapView places={filtered} visited={visited} onSelect={setSelected} />
+            <MapView places={filtered} visited={visited} onSelect={setSelected} theme={theme} routeTo={routeTo} />
           </>
         )}
 

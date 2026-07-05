@@ -17,8 +17,56 @@ html, body, #root {
   height: 100%;
   background: var(--bg);
   color: var(--text);
-  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  /* Rajdhani = Cyberpunk 2077's actual UI typeface */
+  font-family: 'Rajdhani', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-size: 17px;
 }
+
+/* ================= RDR / Frontier theme ================= */
+html[data-theme='rdr'] {
+  --bg: #e7dabb;
+  --panel: #f0e6cc;
+  --panel2: #ddcda6;
+  --line: #b3a072;
+  --text: #2b1d0e;
+  --dim: #6e5c3f;
+  --cyan: #3f5d52;      /* side quests: pine ink */
+  --magenta: #8f1d1d;   /* specials: blood-seal red */
+  --gold: #8a5a19;      /* main quests: aged gold */
+  --green: #4c6b34;     /* xp: sage */
+}
+html[data-theme='rdr'] body,
+html[data-theme='rdr'] #root {
+  font-family: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+  font-size: 16px;
+}
+html[data-theme='rdr'] .logo {
+  font-family: 'Rye', serif;
+  background: none;
+  color: #6d1a10;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, .12);
+}
+html[data-theme='rdr'] .hud { background: linear-gradient(180deg, #efe4c4, var(--bg)); }
+html[data-theme='rdr'] .quest-h { font-family: 'Rye', serif; text-transform: none; letter-spacing: .5px; }
+html[data-theme='rdr'] .search { background: rgba(240, 230, 204, .94); }
+html[data-theme='rdr'] .search:focus { border-color: var(--magenta); box-shadow: 0 0 10px rgba(143, 29, 29, .25); }
+html[data-theme='rdr'] .nav { background: rgba(231, 218, 187, .96); }
+html[data-theme='rdr'] .nav-active { color: var(--magenta) !important; text-shadow: none; }
+html[data-theme='rdr'] .xp-fill { background: linear-gradient(90deg, #8f1d1d, #b5721f); box-shadow: none; }
+html[data-theme='rdr'] .btn-primary {
+  background: linear-gradient(90deg, #8f1d1d, #a8571c);
+  color: #f5ead0;
+  box-shadow: 0 2px 10px rgba(90, 40, 10, .35);
+}
+html[data-theme='rdr'] .sheet-backdrop { background: rgba(60, 40, 15, .45); }
+html[data-theme='rdr'] .sid { background: rgba(143, 29, 29, .06); border-color: #8f1d1d; }
+html[data-theme='rdr'] .marker-label { text-shadow: 0 1px 3px rgba(255, 248, 225, .95), 0 0 6px rgba(255, 248, 225, .9); }
+html[data-theme='rdr'] .badge-got { border-color: var(--gold); box-shadow: 0 2px 10px rgba(138, 90, 25, .25); }
+html[data-theme='rdr'] .profile-level { text-shadow: none; }
+html[data-theme='rdr'] .toast { box-shadow: 0 2px 12px rgba(76, 107, 52, .4); }
+/* parchment-ify the basemap */
+.map-rdr .maplibregl-canvas { filter: sepia(.5) saturate(.72) contrast(1.02) brightness(1.03); }
 
 .app { display: flex; flex-direction: column; height: 100dvh; overflow: hidden; }
 
@@ -31,7 +79,8 @@ html, body, #root {
   z-index: 5;
 }
 .logo {
-  font-weight: 900; font-size: 22px; letter-spacing: 4px;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900; font-size: 21px; letter-spacing: 4px;
   background: linear-gradient(90deg, var(--cyan), var(--magenta));
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
@@ -144,6 +193,26 @@ html, body, #root {
   color: var(--text); text-shadow: 0 1px 4px #000, 0 0 8px #000;
   pointer-events: none;
 }
+.theme-toggle {
+  background: var(--panel2); border: 1px solid var(--line); border-radius: 10px;
+  padding: 5px 11px; font-size: 17px; cursor: pointer; line-height: 1;
+  transition: transform .12s, border-color .12s;
+}
+.theme-toggle:active { transform: scale(.92); }
+.theme-toggle:hover { border-color: var(--gold); }
+
+.origin-marker { position: relative; display: flex; flex-direction: column; align-items: center; z-index: 2; }
+.origin-dot {
+  width: 13px; height: 13px; border-radius: 50%;
+  background: var(--green); border: 2.5px solid #fff;
+  box-shadow: 0 0 10px var(--green);
+}
+.origin-label {
+  margin-top: 2px; font-size: 9px; font-weight: 800; letter-spacing: 1px;
+  color: var(--text); text-shadow: 0 1px 4px #000;
+}
+html[data-theme='rdr'] .origin-label { text-shadow: 0 1px 3px rgba(255, 248, 225, .95); }
+
 @keyframes pulse {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.25); }
